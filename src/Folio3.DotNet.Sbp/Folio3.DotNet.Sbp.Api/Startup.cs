@@ -1,3 +1,4 @@
+using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Data.School;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +39,13 @@ namespace Folio3.DotNet.Sbp.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            app.UseExceptionHandler(appError =>
+            {
+                appError.Run(async context => await GenericApiErrorHandler.HandleErrorAsync(context, logger, isDev: env.IsDevelopment()));
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
