@@ -1,4 +1,4 @@
-﻿using Folio3.DotNet.Sbp.Data.Base.Entities;
+﻿using Folio3.DotNet.Sbp.Data.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;

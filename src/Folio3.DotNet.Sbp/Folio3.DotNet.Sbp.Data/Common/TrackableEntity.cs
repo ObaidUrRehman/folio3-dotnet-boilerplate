@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Folio3.DotNet.Sbp.Data.Base.Entities
+namespace Folio3.DotNet.Sbp.Data.Common
 {
 	public abstract class TrackableEntity
 	{

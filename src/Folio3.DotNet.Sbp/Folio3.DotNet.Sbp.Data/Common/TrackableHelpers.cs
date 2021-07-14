@@ -1,5 +1,4 @@
-﻿using Folio3.DotNet.Sbp.Data.Base.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;

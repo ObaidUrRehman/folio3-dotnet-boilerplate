@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Folio3.DotNet.Sbp.Data.Base.Entities;
+using Folio3.DotNet.Sbp.Data.Common;
 using Folio3.DotNet.Sbp.Service.Common.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
