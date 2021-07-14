@@ -1,9 +1,12 @@
+using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Data.School;
+using Folio3.DotNet.Sbp.Data.School.Entities;
 using Folio3.DotNet.Sbp.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +34,12 @@ namespace Folio3.DotNet.Sbp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:school"]));
-            services.RegisterApplicationServices();
+
+            services
+                .RegisterApplicationServices()
+                .AddScoped<ValidateModelAttribute>()
+                .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<SchoolDbContext>(); ;
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
