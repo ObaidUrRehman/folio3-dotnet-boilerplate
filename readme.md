@@ -2,7 +2,7 @@
 
 Todo:
 
-- [] Sample Data          [Munesh] [https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0]
+- [x] Sample Data          [Munesh] [https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0]
 - [] JWT Setup            [Munesh]
 - [] Audit Logging        [Obaid]
 - [] Multi-tenancy        [Skip]
@@ -12,7 +12,7 @@ Todo:
 - [] Generic service class [Munesh]
 - [x] Generic exception handling and ResponsDto [Munesh]
 - [] Logging            [Skip]
-- [] Automapping        [Munesh] 
+- [x] Automapping        [Munesh] 
 - [] Email templating?  [Skip]
 - [] Generic email service? [Skip]
 - [] Unit testing [Munesh]
