@@ -9,7 +9,7 @@ Todo:
 - [] Soft Delete          [Munesh]
 - [] Machine specific configuration [Munesh]
 - [] Caching              [Skip]
-- [] Generic service class [Munesh]
+- [x] Generic service class [Munesh]
 - [x] Generic exception handling and ResponsDto [Munesh]
 - [] Logging            [Skip]
 - [x] Automapping        [Munesh] 
