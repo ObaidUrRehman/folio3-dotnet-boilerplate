@@ -10,4 +10,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj" />
+  </ItemGroup>
+
 </Project>
