@@ -20,6 +20,7 @@ namespace Folio3.DotNet.Sbp.Service
 				.AddSingleton(mappingConfig.CreateMapper())
 
 				//
+				.AddScoped<UserService>()
 				.AddScoped<StudentService>()
 				;
 		}
