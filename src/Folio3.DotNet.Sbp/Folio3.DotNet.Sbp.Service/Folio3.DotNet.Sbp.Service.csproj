@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Folio3.DotNet.Sbp.Common\Folio3.DotNet.Sbp.Common.csproj" />
     <ProjectReference Include="..\Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj" />
   </ItemGroup>
 
