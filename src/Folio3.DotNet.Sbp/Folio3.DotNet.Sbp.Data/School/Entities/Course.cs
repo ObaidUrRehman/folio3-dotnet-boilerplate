@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
-	public class Course : BaseEntity
+	public class Course : TrackableEntity, IBaseEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Number")]

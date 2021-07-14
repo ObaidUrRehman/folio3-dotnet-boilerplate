@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
-	public class CourseAssignment : BaseEntity
+	public class CourseAssignment : TrackableEntity, IBaseEntity
 	{
 		public int InstructorID { get; set; }
 		public int CourseID { get; set; }

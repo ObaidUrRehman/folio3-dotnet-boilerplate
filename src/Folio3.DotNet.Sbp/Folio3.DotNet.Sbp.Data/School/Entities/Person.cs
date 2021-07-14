@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
-    public abstract class Person : BaseEntity
+    public abstract class Person : TrackableEntity, IBaseEntity
     {
         public int ID { get; set; }
 

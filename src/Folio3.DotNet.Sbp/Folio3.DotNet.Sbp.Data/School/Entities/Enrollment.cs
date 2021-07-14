@@ -11,7 +11,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
         A, B, C, D, F
     }
 
-    public class Enrollment : BaseEntity
+    public class Enrollment : TrackableEntity, IBaseEntity
     {
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }

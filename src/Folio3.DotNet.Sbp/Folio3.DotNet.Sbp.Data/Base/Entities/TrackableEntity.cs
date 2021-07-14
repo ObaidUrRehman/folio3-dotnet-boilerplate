@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Folio3.DotNet.Sbp.Data.Base.Entities
 {
-	public abstract class BaseEntity
+	public abstract class TrackableEntity
 	{
         [Display(Name = "Revisions", AutoGenerateField = false), ScaffoldColumn(false)]
         public int Version { get; set; } = 1;
