@@ -1,5 +1,6 @@
 using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Data.School;
+using Folio3.DotNet.Sbp.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace Folio3.DotNet.Sbp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:school"]));
+            services.RegisterApplicationServices();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
