@@ -7,8 +7,8 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
 	public class CourseAssignment : TrackableEntity, IBaseEntity
 	{
-		public int InstructorID { get; set; }
-		public int CourseID { get; set; }
+		public long InstructorID { get; set; }
+		public long CourseID { get; set; }
 		public Instructor Instructor { get; set; }
 		public Course Course { get; set; }
 	}

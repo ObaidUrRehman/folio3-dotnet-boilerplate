@@ -9,7 +9,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
     public abstract class Person : TrackableEntity, IBaseEntity
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
 
         [Required]
         [StringLength(50)]

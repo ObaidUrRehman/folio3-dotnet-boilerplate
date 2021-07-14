@@ -9,7 +9,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
 	public class OfficeAssignment : TrackableEntity, IBaseEntity
     {
         [Key]
-        public int InstructorID { get; set; }
+        public long InstructorID { get; set; }
         [StringLength(50)]
         [Display(Name = "Office Location")]
         public string Location { get; set; }

@@ -9,7 +9,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
 {
 	public class Department : TrackableEntity, IBaseEntity
     {
-        public int DepartmentID { get; set; }
+        public long DepartmentID { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
-        public int? InstructorID { get; set; }
+        public long? InstructorID { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

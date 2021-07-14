@@ -13,9 +13,9 @@ namespace Folio3.DotNet.Sbp.Data.School.Entities
 
     public class Enrollment : TrackableEntity, IBaseEntity
     {
-        public int EnrollmentID { get; set; }
-        public int CourseID { get; set; }
-        public int StudentID { get; set; }
+        public long EnrollmentID { get; set; }
+        public long CourseID { get; set; }
+        public long StudentID { get; set; }
         [DisplayFormat(NullDisplayText = "No grade")]
         public Grade? Grade { get; set; }
 
