@@ -20,7 +20,12 @@ namespace Folio3.DotNet.Sbp.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                        .ConfigureLogging((c, l) =>
+                        {
+                            l.AddConfiguration(c.Configuration);
+                        })
+                        .UseStartup<Startup>();
                 });
     }
 }
