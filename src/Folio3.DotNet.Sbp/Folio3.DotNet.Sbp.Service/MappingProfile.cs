@@ -10,6 +10,7 @@ namespace Folio3.DotNet.Sbp.Service
 		public MappingProfile()
 		{
 			#region School
+			CreateMap<Data.School.Entities.Student, School.Dto.StudentDto>().ReverseMap();
 			#endregion
 		}
 	}

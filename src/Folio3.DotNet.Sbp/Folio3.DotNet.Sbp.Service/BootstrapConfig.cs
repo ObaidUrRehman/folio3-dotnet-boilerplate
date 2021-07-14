@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Folio3.DotNet.Sbp.Service.School.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace Folio3.DotNet.Sbp.Service
 
 			return services
 				.AddSingleton(mappingConfig.CreateMapper())
+
+				//
+				.AddScoped<StudentService>()
 				;
 		}
 	}
