@@ -7,7 +7,7 @@ Todo:
 - [] Audit Logging        [Obaid]
 - [] Multi-tenancy        [Skip]
 - [] Soft Delete          [Munesh]
-- [] Machine specific configuration [Munesh]
+- [x] Machine specific configuration [Munesh]
 - [] Caching              [Skip]
 - [x] Generic service class [Munesh]
 - [x] Generic exception handling and ResponsDto [Munesh]
