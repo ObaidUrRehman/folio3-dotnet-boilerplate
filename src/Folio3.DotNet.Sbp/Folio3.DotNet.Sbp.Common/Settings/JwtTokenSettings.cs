@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Folio3.DotNet.Sbp.Common.Settings
+﻿namespace Folio3.DotNet.Sbp.Common.Settings
 {
     public class JwtTokenSettings
     {

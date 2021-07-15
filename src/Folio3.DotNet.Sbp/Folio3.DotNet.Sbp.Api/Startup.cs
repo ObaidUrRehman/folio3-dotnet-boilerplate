@@ -1,3 +1,5 @@
+using System;
+using System.Text;
 using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Common.Settings;
@@ -8,9 +10,7 @@ using Folio3.DotNet.Sbp.Service.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,11 +18,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Folio3.DotNet.Sbp.Api
 {
@@ -38,7 +33,8 @@ namespace Folio3.DotNet.Sbp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:school"]));
+            services.AddDbContext<SchoolDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:school"]));
 
             services
                 .RegisterApplicationServices()
@@ -46,12 +42,13 @@ namespace Folio3.DotNet.Sbp.Api
                 .AddHttpContextAccessor()
                 .AddScoped<IUserClaims, UserClaims>()
                 .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<SchoolDbContext>(); ;
+                .AddEntityFrameworkStores<SchoolDbContext>();
+            ;
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Folio3.DotNet.Sbp.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.DotNet.Sbp.Api", Version = "v1"});
             });
 
             var section = Configuration.GetSection("JwtTokenSettings");
@@ -60,12 +57,12 @@ namespace Folio3.DotNet.Sbp.Api
 
             // JWT Bearer Auth
             services
-                .AddAuthentication(configureOptions: c =>
+                .AddAuthentication(c =>
                 {
                     c.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     c.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(configureOptions: c =>
+                .AddJwtBearer(c =>
                 {
                     c.RequireHttpsMetadata = true;
                     c.SaveToken = true;
@@ -88,7 +85,8 @@ namespace Folio3.DotNet.Sbp.Api
         {
             app.UseExceptionHandler(appError =>
             {
-                appError.Run(async context => await GenericApiErrorHandler.HandleErrorAsync(context, logger, isDev: env.IsDevelopment()));
+                appError.Run(async context =>
+                    await GenericApiErrorHandler.HandleErrorAsync(context, logger, env.IsDevelopment()));
             });
 
             if (env.IsDevelopment())
@@ -105,10 +103,7 @@ namespace Folio3.DotNet.Sbp.Api
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Folio3.DotNet.Sbp.Data.School;
 using Folio3.DotNet.Sbp.Data.School.Entities;
 using Folio3.DotNet.Sbp.Service.Common;
@@ -6,18 +8,11 @@ using Folio3.DotNet.Sbp.Service.Common.Services;
 using Folio3.DotNet.Sbp.Service.School.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Folio3.DotNet.Sbp.Service.School.Services
 {
-	public class UserService : BaseService
-	{
-		public UserManager<User> UserManager { get; }
-
+    public class UserService : BaseService
+    {
         public UserService(
             SchoolDbContext context,
             UserManager<User> userManager,
@@ -28,24 +23,30 @@ namespace Folio3.DotNet.Sbp.Service.School.Services
             UserManager = userManager;
         }
 
+        public UserManager<User> UserManager { get; }
+
         public async Task<ServiceResult<UserDto>> CreateUserAsync(RegisterModel registerModel)
-            => await CreateUserAsync(new User
+        {
+            return await CreateUserAsync(new User
             {
                 Email = registerModel.Email,
                 UserName = registerModel.Email,
                 FirstName = registerModel.FirstName,
-                LastName = registerModel.LastName,
+                LastName = registerModel.LastName
             }, registerModel.Password);
+        }
 
         public async Task<ServiceResult<UserDto>> CreateUserAsync(User user, string password)
         {
             var result = await UserManager.CreateAsync(user, password);
-            return result.Succeeded ? Success(Mapper.Map<UserDto>(user)) : Failure<UserDto>("Error creating a new user.");
+            return result.Succeeded
+                ? Success(Mapper.Map<UserDto>(user))
+                : Failure<UserDto>("Error creating a new user.");
         }
 
         public async Task<ServiceResult<UserDto>> VerifyUserAsync(string userName, string password)
         {
-            User user = await UserManager.FindByNameAsync(userName);
+            var user = await UserManager.FindByNameAsync(userName);
 
             if (user == null)
                 return Failure<UserDto>("User does not exist.");
@@ -56,6 +57,9 @@ namespace Folio3.DotNet.Sbp.Service.School.Services
             return Success(Mapper.Map<UserDto>(user));
         }
 
-        public IQueryable<User> AllUsers() => UserManager.Users;
+        public IQueryable<User> AllUsers()
+        {
+            return UserManager.Users;
+        }
     }
 }

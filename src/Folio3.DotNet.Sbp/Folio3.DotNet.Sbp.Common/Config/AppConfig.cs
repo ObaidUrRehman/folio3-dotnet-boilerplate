@@ -1,12 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace Folio3.DotNet.Sbp.Common.Config
 {
     public static class AppConfig
     {
         /// <summary>
-        /// Configure the shared Application settings by combining all the config files together
+        ///     Configure the shared Application settings by combining all the config files together
         /// </summary>
         /// <param name="config">Configuration Builder</param>
         /// <param name="environment">Name of the current environment (e.g. "Development")</param>
@@ -20,9 +21,9 @@ namespace Folio3.DotNet.Sbp.Common.Config
             string shareFolderRelatedPath)
         {
             // find the shared folder in the parent folder
-            string sharedFolder = Path.Combine(contentRootPath, shareFolderRelatedPath);
+            var sharedFolder = Path.Combine(contentRootPath, shareFolderRelatedPath);
 
-            foreach (string path in new[]
+            foreach (var path in new[]
             {
                 // load the SharedSettings first, so that appsettings.json can override it if it needs to
                 // e.g. /Sylfph.Web/SharedSettings.json
@@ -46,11 +47,9 @@ namespace Folio3.DotNet.Sbp.Common.Config
 
                 // load machine specific shared settings last so it can override any setting
                 // e.g. /Sylfph.Web/Settings.MyCoolComputer.json
-                Path.Combine(sharedFolder, $"Settings.{System.Environment.MachineName}.json"),
+                Path.Combine(sharedFolder, $"Settings.{Environment.MachineName}.json")
             })
-            {
-                config.AddJsonFile(path, optional: true);
-            }
+                config.AddJsonFile(path, true);
 
             config.AddEnvironmentVariables();
 

@@ -1,16 +1,15 @@
-﻿using Folio3.DotNet.Sbp.Data.School.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Linq;
+using Folio3.DotNet.Sbp.Data.School.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Folio3.DotNet.Sbp.Data.School.Migrations
 {
-	public static class ModelBuilderExtensions
-	{
+    public static class ModelBuilderExtensions
+    {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-
-            var students = new Student[]
+            var students = new[]
             {
                 new Student
                 {
@@ -72,7 +71,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
                     Updated = DateTime.Parse("2019-07-12"),
                     Version = 1
                 },
-                new Student 
+                new Student
                 {
                     ID = 7,
                     FirstMidName = "Laura",
@@ -82,7 +81,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
                     Updated = DateTime.Parse("2019-07-12"),
                     Version = 1
                 },
-                new Student 
+                new Student
                 {
                     ID = 8,
                     FirstMidName = "Nino",
@@ -96,7 +95,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<Student>().HasData(students);
 
-            var instructors = new Instructor[]
+            var instructors = new[]
             {
                 new Instructor
                 {
@@ -152,7 +151,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<Instructor>().HasData(instructors);
 
-            var departments = new Department[]
+            var departments = new[]
             {
                 new Department
                 {
@@ -202,7 +201,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<Department>().HasData(departments);
 
-            var courses = new Course[]
+            var courses = new[]
             {
                 new Course
                 {
@@ -268,7 +267,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<Course>().HasData(courses);
 
-            var officeAssignments = new OfficeAssignment[]
+            var officeAssignments = new[]
             {
                 new OfficeAssignment
                 {
@@ -293,12 +292,12 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
                     Created = DateTime.Parse("2021-07-12"),
                     Updated = DateTime.Parse("2019-07-12"),
                     Version = 1
-                },
+                }
             };
 
             modelBuilder.Entity<OfficeAssignment>().HasData(officeAssignments);
 
-            var courseInstructors = new CourseAssignment[]
+            var courseInstructors = new[]
             {
                 new CourseAssignment
                 {
@@ -360,7 +359,7 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<CourseAssignment>().HasData(courseInstructors);
 
-            var enrollments = new Enrollment[]
+            var enrollments = new[]
             {
                 new Enrollment
                 {
@@ -466,5 +465,5 @@ namespace Folio3.DotNet.Sbp.Data.School.Migrations
 
             modelBuilder.Entity<Enrollment>().HasData(enrollments);
         }
-	}
+    }
 }

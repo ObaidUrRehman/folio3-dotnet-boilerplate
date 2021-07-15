@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Folio3.DotNet.Sbp.Service.Common
 {
     /// <summary>
-    /// Represents the result of a service method call
+    ///     Represents the result of a service method call
     /// </summary>
     public class ServiceResult<T>
     {

@@ -1,12 +1,7 @@
 using Folio3.DotNet.Sbp.Common.Config;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Folio3.DotNet.Sbp.Api
 {
@@ -17,21 +12,20 @@ namespace Folio3.DotNet.Sbp.Api
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder
-                        .ConfigureAppConfiguration((WebHostBuilderContext context, IConfigurationBuilder builder) =>
+                        .ConfigureAppConfiguration((context, builder) =>
                             builder.CombineSettings(
-                                environment: context.HostingEnvironment.EnvironmentName,
-                                contentRootPath: context.HostingEnvironment.ContentRootPath,
-                                shareFolderRelatedPath: @".."))
-                        .ConfigureLogging((c, l) =>
-                        {
-                            l.AddConfiguration(c.Configuration);
-                        })
+                                context.HostingEnvironment.EnvironmentName,
+                                context.HostingEnvironment.ContentRootPath,
+                                @".."))
+                        .ConfigureLogging((c, l) => { l.AddConfiguration(c.Configuration); })
                         .UseStartup<Startup>();
                 });
+        }
     }
 }
