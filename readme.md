@@ -3,7 +3,7 @@
 Todo:
 
 - [x] Sample Data          [Munesh] [https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0]
-- [ ] JWT Setup            [Munesh]
+- [x] JWT Setup            [Munesh]
 - [ ] Audit Logging        [Obaid]
 - [ ] Multi-tenancy        [Skip]
 - [ ] Soft Delete          [Munesh]
