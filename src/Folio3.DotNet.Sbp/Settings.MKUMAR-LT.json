@@ -1,0 +1,5 @@
+{
+	"ConnectionStrings": {
+		"School": "Server=localhost,1433;Database=School;User Id=admin;Password=Welcome11!;MultipleActiveResultSets=true"
+	}
+}

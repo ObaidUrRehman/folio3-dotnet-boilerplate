@@ -5,15 +5,27 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Api", "Folio3.DotNet.Sbp.Api\Folio3.DotNet.Sbp.Api.csproj", "{6F053C82-39A2-48B6-BC12-0D5DC019BDCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folio3.DotNet.Sbp.Data", "Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj", "{454A651D-0793-4011-AC59-065973BFB51C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Data", "Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj", "{454A651D-0793-4011-AC59-065973BFB51C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folio3.DotNet.Sbp.Common", "Folio3.DotNet.Sbp.Common\Folio3.DotNet.Sbp.Common.csproj", "{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Common", "Folio3.DotNet.Sbp.Common\Folio3.DotNet.Sbp.Common.csproj", "{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folio3.DotNet.Sbp.Service", "Folio3.DotNet.Sbp.Service\Folio3.DotNet.Sbp.Service.csproj", "{37C391C8-43AF-40F4-A927-0BAF68938312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Service", "Folio3.DotNet.Sbp.Service\Folio3.DotNet.Sbp.Service.csproj", "{37C391C8-43AF-40F4-A927-0BAF68938312}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A36E1EAF-C159-4611-A224-C68509DDFD91}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\README.md = ..\..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{1A9A5A17-91FD-4E74-834F-D95E1C7061CE}"
+	ProjectSection(SolutionItems) = preProject
+		SharedSettings.Development.json = SharedSettings.Development.json
+		SharedSettings.json = SharedSettings.json
+		SharedSettings.Production.json = SharedSettings.Production.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Machine", "Machine", "{A2761187-7ABA-4F8C-BF0E-700F96810115}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.MKUMAR-LT.json = Settings.MKUMAR-LT.json
 	EndProjectSection
 EndProject
 Global
@@ -41,6 +53,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2761187-7ABA-4F8C-BF0E-700F96810115} = {1A9A5A17-91FD-4E74-834F-D95E1C7061CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D123B2E0-BD4B-40A6-B5BA-68A466417208}

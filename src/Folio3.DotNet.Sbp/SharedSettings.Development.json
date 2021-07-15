@@ -1,0 +1,12 @@
+{
+	"ConnectionStrings": {
+		"School": "Server=localhost,1433;Database=School;User Id=admin;Password=Welcome11!;MultipleActiveResultSets=true"
+	},
+	"JwtTokenSettings": {
+		"Secret": "mMP8ClVqHQEDwCAvKXKhJ9b4n8YyKRT6",
+		"Issuer": "https://folio3.com",
+		"Audience": "https://folio3.com",
+		"AccessTokenExpiration": 20,
+		"RefreshTokenExpiration": 60
+	}
+}
