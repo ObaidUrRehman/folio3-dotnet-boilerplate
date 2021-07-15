@@ -3,6 +3,7 @@ using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Data.School;
 using Folio3.DotNet.Sbp.Data.School.Entities;
 using Folio3.DotNet.Sbp.Service;
+using Folio3.DotNet.Sbp.Service.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,8 @@ namespace Folio3.DotNet.Sbp.Api
             services
                 .RegisterApplicationServices()
                 .AddScoped<ValidateModelAttribute>()
+                .AddHttpContextAccessor()
+                .AddScoped<IUserClaims, UserClaims>()
                 .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<SchoolDbContext>(); ;
 
