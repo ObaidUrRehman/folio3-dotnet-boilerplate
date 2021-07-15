@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Folio3.DotNet.Sbp.Service.Common.Services;
 using Folio3.DotNet.Sbp.Service.School.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +19,7 @@ namespace Folio3.DotNet.Sbp.Service
 
 			return services
 				.AddSingleton(mappingConfig.CreateMapper())
+				.AddScoped<JwtTokenService>()
 
 				//
 				.AddScoped<UserService>()

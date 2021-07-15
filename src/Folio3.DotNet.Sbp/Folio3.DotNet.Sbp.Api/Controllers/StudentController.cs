@@ -1,6 +1,7 @@
 ﻿using Folio3.DotNet.Sbp.Service.Common.Dto;
 using Folio3.DotNet.Sbp.Service.School.Dto;
 using Folio3.DotNet.Sbp.Service.School.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +13,7 @@ namespace Folio3.DotNet.Sbp.Api.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
+	[Authorize]
 	public class StudentController : BaseController
 	{
 		public StudentService StudentService { get; }

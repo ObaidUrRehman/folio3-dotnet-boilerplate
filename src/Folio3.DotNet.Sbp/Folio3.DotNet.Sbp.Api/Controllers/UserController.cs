@@ -1,6 +1,7 @@
 ﻿using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Models;
 using Folio3.DotNet.Sbp.Service.Common.Dto;
+using Folio3.DotNet.Sbp.Service.Common.Services;
 using Folio3.DotNet.Sbp.Service.School.Dto;
 using Folio3.DotNet.Sbp.Service.School.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,15 @@ namespace Folio3.DotNet.Sbp.Api.Controllers
 	public class UserController : BaseController
 	{
 		public UserService UserService { get; }
+		public JwtTokenService JwtTokenService { get; }
 		public UserController(
 			ILogger<UserController> logger,
-			UserService userService
+			UserService userService,
+			JwtTokenService jwtTokenService
 			) : base(logger)
 		{
 			UserService = userService;
+			JwtTokenService = jwtTokenService;
 		}
 
 		[HttpPost("register")]
@@ -49,13 +53,10 @@ namespace Folio3.DotNet.Sbp.Api.Controllers
 			if (!response.Success)
 				return Unauthorized<AuthenticateResponse>("Username or password is incorrect" );
 
-			// TODO:
-			var token = string.Empty;
-
 			return Success(new AuthenticateResponse
 			{
 				User = response.Data,
-				Token = token
+				Token = JwtTokenService.CreateToken(response.Data)
 			});
 		}
 	}
