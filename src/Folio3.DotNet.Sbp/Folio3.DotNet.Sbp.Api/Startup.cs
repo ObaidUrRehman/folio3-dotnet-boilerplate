@@ -2,7 +2,10 @@ using System;
 using System.Text;
 using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Middleware;
+using Folio3.DotNet.Sbp.Api.Provider;
 using Folio3.DotNet.Sbp.Common.Settings;
+using Folio3.DotNet.Sbp.Data.AuditLogging;
+using Folio3.DotNet.Sbp.Data.AuditLogging.Extensions;
 using Folio3.DotNet.Sbp.Data.School;
 using Folio3.DotNet.Sbp.Data.School.Entities;
 using Folio3.DotNet.Sbp.Service;
@@ -35,6 +38,8 @@ namespace Folio3.DotNet.Sbp.Api
         {
             services.AddDbContext<SchoolDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:school"]));
+
+            services.ConfigureAuditLogging<AuditMetaData>(Configuration["ConnectionStrings:auditLog"]);
 
             services
                 .RegisterApplicationServices()

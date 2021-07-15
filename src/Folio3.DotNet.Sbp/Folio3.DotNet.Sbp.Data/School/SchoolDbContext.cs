@@ -1,19 +1,21 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Folio3.DotNet.Sbp.Data.AuditLogging;
 using Folio3.DotNet.Sbp.Data.Common;
 using Folio3.DotNet.Sbp.Data.School.Entities;
 using Folio3.DotNet.Sbp.Data.School.Migrations;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Folio3.DotNet.Sbp.Data.School
 {
     // https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0
-    public class SchoolDbContext : IdentityDbContext<User>
+    public class SchoolDbContext : AuditedDbContext
     {
-        public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
-        {
-        }
+        public SchoolDbContext(DbContextOptions<SchoolDbContext> options, AuditLogDbContext auditLogDbContext,
+            ILogger<SchoolDbContext> logger, AuditLogger auditLogger, IAuditMetaData auditMetaData) : base(options, auditLogDbContext,
+            logger, auditLogger, auditMetaData)
+        { }
 
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
