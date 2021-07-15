@@ -2,17 +2,13 @@
 
 Todo:
 
-* Sample Data          [Munesh] [https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0]
-* JWT Setup            [Munesh]
-* Audit Logging        [Obaid]
-* Multi-tenancy        [Skip]
-* Soft Delete          [Munesh]
-* Machine specific configuration [Munesh]
-* Caching              [Skip]
-* Generic service class [Munesh]
-* Generic exception handling and ResponsDto [Munesh]
-* Logging            [Skip]
-* Automapping        [Munesh] 
-* Email templating?  [Skip]
-* Generic email service? [Skip]
-* Unit testing [Munesh]
+* JWT Setup
+* Audit Logging
+* Multi-tenancy
+* Soft Delete
+* Machine specific configuration
+* Caching
+* Generic service class
+* Generic exception handling
+* Logging
+* Automapping
