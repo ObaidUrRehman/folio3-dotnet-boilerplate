@@ -41,7 +41,7 @@ namespace Folio3.DotNet.Sbp.Service.School.Services
             var result = await UserManager.CreateAsync(user, password);
             return result.Succeeded
                 ? Success(Mapper.Map<UserDto>(user))
-                : Failure<UserDto>("Error creating a new user.");
+                : Failure<UserDto>(result.Errors.Select(r => r.Description).ToList());
         }
 
         public async Task<ServiceResult<UserDto>> VerifyUserAsync(string userName, string password)

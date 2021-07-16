@@ -3,6 +3,7 @@ using System.Text;
 using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Api.Provider;
+using Folio3.DotNet.Sbp.Api.Swagger;
 using Folio3.DotNet.Sbp.Common.Settings;
 using Folio3.DotNet.Sbp.Data.AuditLogging.Extensions;
 using Folio3.DotNet.Sbp.Data.School;
@@ -19,7 +20,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 
 namespace Folio3.DotNet.Sbp.Api
 {
@@ -48,11 +48,10 @@ namespace Folio3.DotNet.Sbp.Api
                 .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<SchoolDbContext>();
 
+            services.ConfigureSwagger();
+
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.DotNet.Sbp.Api", Version = "v1"});
-            });
+            
 
             var section = Configuration.GetSection("JwtTokenSettings");
             services.Configure<JwtTokenSettings>(section);
@@ -95,8 +94,7 @@ namespace Folio3.DotNet.Sbp.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Folio3.DotNet.Sbp.Api v1"));
+                app.ConfigureSwaggerUi();
             }
 
             app.UseHttpsRedirection();

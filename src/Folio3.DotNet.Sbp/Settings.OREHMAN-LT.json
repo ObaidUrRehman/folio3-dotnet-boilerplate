@@ -1,0 +1,6 @@
+{
+	"ConnectionStrings": {
+		"School": "Server=localhost,1433;Database=School;User Id=sa;Password=click123;MultipleActiveResultSets=true",
+		"AuditLog": "Server=.,1433;Database=AuditLog;User Id=sa;Password=click123;MultipleActiveResultSets=true"
+	}
+}

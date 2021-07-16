@@ -26,6 +26,11 @@ namespace Folio3.DotNet.Sbp.Service.Common.Services
             return Result(default(T), false, new List<string> {errorMessage});
         }
 
+        protected static ServiceResult<T> Failure<T>(List<string> errorMessages)
+        {
+            return Result(default(T), false, errorMessages);
+        }
+
         protected static ServiceResult<T> Result<T>(T data, bool success, List<string> errors = null)
         {
             return new ServiceResult<T>
