@@ -10,8 +10,6 @@ namespace Folio3.DotNet.Sbp.Data.AuditLogging.Extensions
             this IServiceCollection services, string auditLogDbConnectionString) where T : IAuditMetaData
         {
             services
-                .AddScoped<AuditLogGenerator>()
-                .AddScoped<AuditLogger>()
                 .AddScoped(typeof(IAuditMetaData), typeof(T))
                 ;
 

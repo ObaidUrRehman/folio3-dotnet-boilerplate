@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Folio3.DotNet.Sbp.Data.AuditLogging;
 using Folio3.DotNet.Sbp.Data.Common;
@@ -13,8 +14,8 @@ namespace Folio3.DotNet.Sbp.Data.School
     public class SchoolDbContext : AuditedDbContext
     {
         public SchoolDbContext(DbContextOptions<SchoolDbContext> options, AuditLogDbContext auditLogDbContext,
-            ILogger<SchoolDbContext> logger, AuditLogger auditLogger, IAuditMetaData auditMetaData) : base(options, auditLogDbContext,
-            logger, auditLogger, auditMetaData)
+            ILogger<SchoolDbContext> logger, IAuditMetaData auditMetaData) : base(options, auditLogDbContext,
+            logger, auditMetaData)
         { }
 
         public virtual DbSet<Course> Courses { get; set; }
@@ -35,16 +36,6 @@ namespace Folio3.DotNet.Sbp.Data.School
                 .HasKey(c => new {c.CourseID, c.InstructorID});
         }
 
-        public override int SaveChanges()
-        {
-            return SaveChanges(true);
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            return Task.Run(async () => await SaveChangesAsync(acceptAllChangesOnSuccess)).Result;
-        }
-
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             return await SaveChangesAsync(true, cancellationToken);
@@ -54,9 +45,7 @@ namespace Folio3.DotNet.Sbp.Data.School
             CancellationToken cancellationToken = default)
         {
             TrackableHelpers.PopulateTrackableFields(ChangeTracker);
-
             var result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-
             return result;
         }
     }
