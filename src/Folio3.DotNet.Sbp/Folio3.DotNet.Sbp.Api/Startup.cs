@@ -4,7 +4,6 @@ using Folio3.DotNet.Sbp.Api.Attributes;
 using Folio3.DotNet.Sbp.Api.Middleware;
 using Folio3.DotNet.Sbp.Api.Provider;
 using Folio3.DotNet.Sbp.Common.Settings;
-using Folio3.DotNet.Sbp.Data.AuditLogging;
 using Folio3.DotNet.Sbp.Data.AuditLogging.Extensions;
 using Folio3.DotNet.Sbp.Data.School;
 using Folio3.DotNet.Sbp.Data.School.Entities;
@@ -48,7 +47,6 @@ namespace Folio3.DotNet.Sbp.Api
                 .AddScoped<IUserClaims, UserClaims>()
                 .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<SchoolDbContext>();
-            ;
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
