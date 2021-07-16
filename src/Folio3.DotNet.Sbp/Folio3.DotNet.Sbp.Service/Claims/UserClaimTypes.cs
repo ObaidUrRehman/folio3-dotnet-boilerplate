@@ -1,9 +1,6 @@
-﻿using Folio3.DotNet.Sbp.Data.School.Entities;
-using Folio3.DotNet.Sbp.Service.School.Dto;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
+using Folio3.DotNet.Sbp.Service.School.Dto;
 
 namespace Folio3.DotNet.Sbp.Service.Claims
 {
@@ -15,12 +12,14 @@ namespace Folio3.DotNet.Sbp.Service.Claims
         public const string Email = ClaimTypes.Email;
 
         public static IList<Claim> GetClaims(UserDto user)
-            => new List<Claim>
+        {
+            return new List<Claim>
             {
                 new Claim(Id, user.Id),
                 new Claim(FirstName, user.FirstName),
                 new Claim(LastName, user.LastName),
-                new Claim(Email, user.Email),
+                new Claim(Email, user.Email)
             };
+        }
     }
 }

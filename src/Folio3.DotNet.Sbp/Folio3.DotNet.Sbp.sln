@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Machine", "Machine", "{A2761187-7ABA-4F8C-BF0E-700F96810115}"
 	ProjectSection(SolutionItems) = preProject
 		Settings.MKUMAR-LT.json = Settings.MKUMAR-LT.json
+		Settings.OREHMAN-LT.json = Settings.OREHMAN-LT.json
 	EndProjectSection
 EndProject
 Global

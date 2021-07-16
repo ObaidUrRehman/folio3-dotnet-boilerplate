@@ -1,15 +1,13 @@
-﻿using Folio3.DotNet.Sbp.Service.Common.Dto;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using Folio3.DotNet.Sbp.Service.Common.Dto;
 using Folio3.DotNet.Sbp.Service.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace Folio3.DotNet.Sbp.Api.Middleware
 {
@@ -17,17 +15,17 @@ namespace Folio3.DotNet.Sbp.Api.Middleware
     {
         public static async Task HandleErrorAsync(HttpContext context, ILogger logger, bool isDev)
         {
-            HttpStatusCode status = HttpStatusCode.InternalServerError;
-            context.Response.StatusCode = (int)status;
+            var status = HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = (int) status;
             context.Response.ContentType = "application/json";
 
             var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
             if (contextFeature == null)
                 return;
 
-            Exception ex = contextFeature.Error;
+            var ex = contextFeature.Error;
 
-            var response = new ResponseDto { Success = false, };
+            var response = new ResponseDto {Success = false};
 
             if (ex is ServiceException)
             {
@@ -56,10 +54,10 @@ namespace Folio3.DotNet.Sbp.Api.Middleware
                 }
             }
 
-            string json = JsonConvert.SerializeObject(response,
-                new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+            var json = JsonConvert.SerializeObject(response,
+                new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()});
 
-            context.Response.StatusCode = (int)status;
+            context.Response.StatusCode = (int) status;
             await context.Response.WriteAsync(json);
         }
     }

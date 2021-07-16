@@ -2,12 +2,5 @@
 	"ConnectionStrings": {
 		"School": "Server=localhost,1433;Database=School;User Id=sa;Password=click123;MultipleActiveResultSets=true",
 		"AuditLog": "Server=.,1433;Database=AuditLog;User Id=sa;Password=click123;MultipleActiveResultSets=true"
-	},
-	"JwtTokenSettings": {
-		"Secret": "mMP8ClVqHQEDwCAvKXKhJ9b4n8YyKRT6",
-		"Issuer": "https://folio3.com",
-		"Audience": "https://folio3.com",
-		"AccessTokenExpiration": 20,
-		"RefreshTokenExpiration": 60
 	}
 }
