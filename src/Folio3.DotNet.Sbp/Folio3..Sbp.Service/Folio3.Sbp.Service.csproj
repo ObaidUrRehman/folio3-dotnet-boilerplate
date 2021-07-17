@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Folio3.DotNet.Sbp.Common\Folio3.DotNet.Sbp.Common.csproj" />
-    <ProjectReference Include="..\Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj" />
+    <ProjectReference Include="..\Folio3.Sbp.Common\Folio3.Sbp.Common.csproj" />
+    <ProjectReference Include="..\Folio3.Sbp.Data\Folio3.Sbp.Data.csproj" />
   </ItemGroup>
 
 </Project>

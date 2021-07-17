@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Api", "Folio3.DotNet.Sbp.Api\Folio3.DotNet.Sbp.Api.csproj", "{6F053C82-39A2-48B6-BC12-0D5DC019BDCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.Api", "Folio3.Sbp.Api\Folio3.Sbp.Api.csproj", "{6F053C82-39A2-48B6-BC12-0D5DC019BDCC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Data", "Folio3.DotNet.Sbp.Data\Folio3.DotNet.Sbp.Data.csproj", "{454A651D-0793-4011-AC59-065973BFB51C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.Data", "Folio3.Sbp.Data\Folio3.Sbp.Data.csproj", "{454A651D-0793-4011-AC59-065973BFB51C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Common", "Folio3.DotNet.Sbp.Common\Folio3.DotNet.Sbp.Common.csproj", "{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.DotNet.Sbp.Service", "Folio3.DotNet.Sbp.Service\Folio3.DotNet.Sbp.Service.csproj", "{37C391C8-43AF-40F4-A927-0BAF68938312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.Common", "Folio3.Sbp.Common\Folio3.Sbp.Common.csproj", "{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A36E1EAF-C159-4611-A224-C68509DDFD91}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Machine", "Machine", "{A276
 		Settings.OREHMAN-LT.json = Settings.OREHMAN-LT.json
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.Service", "Folio3..Sbp.Service\Folio3.Sbp.Service.csproj", "{7338B9AD-988C-4D28-A93E-44E9634D29F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +47,10 @@ Global
 		{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA98FC0A-99F5-4DA9-BEC0-73A1FAC24132}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37C391C8-43AF-40F4-A927-0BAF68938312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37C391C8-43AF-40F4-A927-0BAF68938312}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37C391C8-43AF-40F4-A927-0BAF68938312}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37C391C8-43AF-40F4-A927-0BAF68938312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7338B9AD-988C-4D28-A93E-44E9634D29F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7338B9AD-988C-4D28-A93E-44E9634D29F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7338B9AD-988C-4D28-A93E-44E9634D29F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7338B9AD-988C-4D28-A93E-44E9634D29F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
