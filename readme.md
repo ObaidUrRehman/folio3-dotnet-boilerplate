@@ -1,5 +1,15 @@
 # Folio3 Dotnet Simple Boiler Plate (sbp)
 
+
+## Features
+* Audit Logging
+* Meta fields (Created, Modified, Version)
+* Soft Delete
+* Machine specific configuration
+* JWT
+* Generic Service class
+* Generic Exception handling and Respose
+
 Todo:
 
 - [x] Sample Data          [Munesh] [https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0]
