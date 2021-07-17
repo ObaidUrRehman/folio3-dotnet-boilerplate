@@ -13,20 +13,20 @@ using Microsoft.Extensions.Logging;
 
 namespace Folio3.Sbp.Data.AuditLogging
 {
-    public class AuditedDbContext: IdentityDbContext<User>
+    public class AuditedDbContext : IdentityDbContext<User>
     {
-        private AuditLogDbContext AuditLogDbContext { get; }
-        private IAuditMetaData AuditMetaData { get; }
-
-        protected ILogger Logger { get; }
-
-        public AuditedDbContext(DbContextOptions options, AuditLogDbContext auditLogDbContext, 
-            ILogger logger,IAuditMetaData auditMetaData) : base(options)
+        public AuditedDbContext(DbContextOptions options, AuditLogDbContext auditLogDbContext,
+            ILogger logger, IAuditMetaData auditMetaData) : base(options)
         {
             Logger = logger;
             AuditLogDbContext = auditLogDbContext;
             AuditMetaData = auditMetaData;
         }
+
+        private AuditLogDbContext AuditLogDbContext { get; }
+        private IAuditMetaData AuditMetaData { get; }
+
+        protected ILogger Logger { get; }
 
         public override int SaveChanges()
         {
@@ -43,7 +43,8 @@ namespace Folio3.Sbp.Data.AuditLogging
             return await SaveChangesAsync(true, cancellationToken);
         }
 
-        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
+        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
+            CancellationToken cancellationToken = new CancellationToken())
         {
             ChangeTracker.DetectChanges();
 
@@ -52,10 +53,10 @@ namespace Folio3.Sbp.Data.AuditLogging
                 .Where(dbEntry => dbEntry.State != EntityState.Unchanged)
                 .ToList();
 
-            IList<AuditLog> auditLogs = GenerateLogs(dbEntries);
+            var auditLogs = GenerateLogs(dbEntries);
 
             // commit the changes (without the Audit Logs)
-            int result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+            var result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 
             if (!auditLogs.Any())
                 return result;
@@ -66,11 +67,9 @@ namespace Folio3.Sbp.Data.AuditLogging
             try
             {
                 if (auditLogs.Count == auditLogsPost.Count)
-                {
-                    for (int i = 0; i < auditLogs.Count; i++)
+                    for (var i = 0; i < auditLogs.Count; i++)
                         if (auditLogs[i].Id == 0 && auditLogs[i].EntityState == EntityState.Added)
                             auditLogs[i].RecordId = auditLogsPost[i].RecordId;
-                }
 
                 // now commit the Audit Logs
                 await AuditLogDbContext.AuditLogs.AddRangeAsync(auditLogs, cancellationToken);
@@ -85,7 +84,8 @@ namespace Folio3.Sbp.Data.AuditLogging
             return result;
 
             IList<AuditLog> GenerateLogs(IList<EntityEntry> dbEntries)
-                => GenerateAuditLogs(dbEntries)
+            {
+                return GenerateAuditLogs(dbEntries)
                     .Select(auditLog =>
                     {
                         auditLog.UserEmail = AuditMetaData?.UserEmail;
@@ -93,10 +93,11 @@ namespace Folio3.Sbp.Data.AuditLogging
                         return auditLog;
                     })
                     .ToList();
+            }
         }
 
         /// <summary>
-        /// Generate a detailed Audit Logs of changes to tracked entities
+        ///     Generate a detailed Audit Logs of changes to tracked entities
         /// </summary>
         public IEnumerable<AuditLog> GenerateAuditLogs(IEnumerable<EntityEntry> dbEntries)
         {
@@ -113,8 +114,8 @@ namespace Folio3.Sbp.Data.AuditLogging
 
         private AuditLog GenerateAuditLog(EntityEntry dbEntry)
         {
-            object orig = GetOriginalEntity(dbEntry);
-            object curr = GetCurrentEntity(dbEntry);
+            var orig = GetOriginalEntity(dbEntry);
+            var curr = GetCurrentEntity(dbEntry);
 
             return new AuditLog
             {
@@ -130,10 +131,10 @@ namespace Folio3.Sbp.Data.AuditLogging
                     {
                         Property = prop.Name,
                         Original = GetPropertyValue(orig, prop.Name),
-                        Current = GetPropertyValue(curr, prop.Name),
+                        Current = GetPropertyValue(curr, prop.Name)
                     })
                     .Where(change => change.Original != change.Current)
-                    .ToList(),
+                    .ToList()
             };
         }
 
@@ -150,7 +151,9 @@ namespace Folio3.Sbp.Data.AuditLogging
                 case EntityState.Unchanged:
                 case EntityState.Added:
                     return null;
-            };
+            }
+
+            ;
         }
 
         private static object GetCurrentEntity(EntityEntry dbEntry)
@@ -166,7 +169,9 @@ namespace Folio3.Sbp.Data.AuditLogging
                 case EntityState.Detached:
                 case EntityState.Unchanged:
                     return null;
-            };
+            }
+
+            ;
         }
 
         private string GetPropertyValue(object entity, string name)
@@ -176,7 +181,7 @@ namespace Folio3.Sbp.Data.AuditLogging
                 if (entity == null)
                     return "";
 
-                object o = entity
+                var o = entity
                     .GetType()
                     .GetProperty(name)
                     .GetValue(entity, null);

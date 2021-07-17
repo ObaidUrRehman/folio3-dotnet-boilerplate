@@ -1,39 +1,37 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Folio3.Sbp.Data.AuditLogging.Extensions
 {
     public static class EntityExtensions
     {
         /// <summary>
-        /// Get the Table() attribute, if one exists
-        /// Otherwise return the entity name 
-        /// Should handle pluralized name
+        ///     Get the Table() attribute, if one exists
+        ///     Otherwise return the entity name
+        ///     Should handle pluralized name
         /// </summary>
         public static string GetTableName(this EntityEntry dbEntry)
         {
-            Type type = dbEntry.Entity.GetType();
+            var type = dbEntry.Entity.GetType();
 
             return type
-                .GetCustomAttributes(typeof(TableAttribute), false)
-                .SingleOrDefault()
-                    is TableAttribute attribute
-                        ? attribute.Name
-                        : type.Name;
+                    .GetCustomAttributes(typeof(TableAttribute), false)
+                    .SingleOrDefault()
+                is TableAttribute attribute
+                ? attribute.Name
+                : type.Name;
         }
 
         /// <summary>
-        /// Returns a string representing the Primary key
-        /// If the PK is composite, it will combine the components and separate with a dash
+        ///     Returns a string representing the Primary key
+        ///     If the PK is composite, it will combine the components and separate with a dash
         /// </summary>
         public static string GetPrimaryKeyValue(this EntityEntry dbEntry)
         {
             try
             {
-                IKey pk = dbEntry.Metadata.FindPrimaryKey();
+                var pk = dbEntry.Metadata.FindPrimaryKey();
 
                 if (pk == null)
                     return "N/A";

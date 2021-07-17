@@ -15,7 +15,8 @@ namespace Folio3.Sbp.Data.School
         public SchoolDbContext(DbContextOptions<SchoolDbContext> options, AuditLogDbContext auditLogDbContext,
             ILogger<SchoolDbContext> logger, IAuditMetaData auditMetaData) : base(options, auditLogDbContext,
             logger, auditMetaData)
-        { }
+        {
+        }
 
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }

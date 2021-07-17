@@ -5,7 +5,7 @@ namespace Folio3.Sbp.Data.AuditLogging.Extensions
 {
     public static class AuditedRepoExtensions
     {
-        public static IServiceCollection ConfigureAuditLogging<T> (
+        public static IServiceCollection ConfigureAuditLogging<T>(
             this IServiceCollection services, string auditLogDbConnectionString) where T : IAuditMetaData
         {
             services
@@ -13,12 +13,11 @@ namespace Folio3.Sbp.Data.AuditLogging.Extensions
                 ;
 
             services.AddDbContext<AuditLogDbContext>(options =>
-                options.UseSqlServer(auditLogDbConnectionString, 
-                    b => b.MigrationsAssembly("Folio3.DotNet.Sbp.Data")));
+                options.UseSqlServer(auditLogDbConnectionString,
+                    b => b.MigrationsAssembly("Folio3.Sbp.Data")));
 
 
             return services;
         }
-
     }
 }

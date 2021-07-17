@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace Folio3.Sbp.Data.AuditLogging.Migrations
 {
     [DbContext(typeof(AuditLogDbContext))]
-    partial class AuditLogDbContextModelSnapshot : ModelSnapshot
+    internal class AuditLogDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,90 +19,90 @@ namespace Folio3.Sbp.Data.AuditLogging.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLog", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EntityState")
-                        .HasColumnType("int");
+                b.Property<int>("EntityState")
+                    .HasColumnType("int");
 
-                    b.Property<string>("RecordId")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                b.Property<string>("RecordId")
+                    .IsRequired()
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("TableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                b.Property<string>("TableName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("TimeStamp")
+                    .HasColumnType("datetime2");
 
-                    b.Property<string>("UserEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                b.Property<string>("UserEmail")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                b.Property<string>("UserName")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("RecordId");
+                b.HasIndex("RecordId");
 
-                    b.HasIndex("TableName");
+                b.HasIndex("TableName");
 
-                    b.HasIndex("TimeStamp");
+                b.HasIndex("TimeStamp");
 
-                    b.HasIndex("UserEmail");
+                b.HasIndex("UserEmail");
 
-                    b.ToTable("AuditLogs");
-                });
-
-            modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLogChange", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("AuditLogId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Current")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Original")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Property")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuditLogId");
-
-                    b.ToTable("AuditLogChanges");
-                });
+                b.ToTable("AuditLogs");
+            });
 
             modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLogChange", b =>
-                {
-                    b.HasOne("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLog", "AuditLog")
-                        .WithMany("AuditLogChanges")
-                        .HasForeignKey("AuditLogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Navigation("AuditLog");
-                });
+                b.Property<long>("AuditLogId")
+                    .HasColumnType("bigint");
 
-            modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLog", b =>
-                {
-                    b.Navigation("AuditLogChanges");
-                });
+                b.Property<string>("Current")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Original")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Property")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("Id");
+
+                b.HasIndex("AuditLogId");
+
+                b.ToTable("AuditLogChanges");
+            });
+
+            modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLogChange", b =>
+            {
+                b.HasOne("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLog", "AuditLog")
+                    .WithMany("AuditLogChanges")
+                    .HasForeignKey("AuditLogId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("AuditLog");
+            });
+
+            modelBuilder.Entity("Folio3.DotNet.Sbp.Data.AuditLogging.Entities.AuditLog",
+                b => { b.Navigation("AuditLogChanges"); });
 #pragma warning restore 612, 618
         }
     }

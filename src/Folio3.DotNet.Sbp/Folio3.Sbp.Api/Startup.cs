@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using Folio3.DotNet.Sbp.Data.School;
 using Folio3.Sbp.Api.Attributes;
 using Folio3.Sbp.Api.Middleware;
 using Folio3.Sbp.Api.Provider;
@@ -52,7 +51,7 @@ namespace Folio3.Sbp.Api
             services.ConfigureSwagger();
 
             services.AddControllers();
-            
+
 
             var section = Configuration.GetSection("JwtTokenSettings");
             services.Configure<JwtTokenSettings>(section);

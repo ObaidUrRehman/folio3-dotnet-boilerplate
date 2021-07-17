@@ -12,7 +12,7 @@ namespace Folio3.Sbp.Api.Swagger
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Folio3.DotNet.Sbp.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.DotNet.Sbp.Api", Version = "v1"});
 
                 var securityScheme = new OpenApiSecurityScheme
                 {
@@ -31,7 +31,7 @@ namespace Folio3.Sbp.Api.Swagger
                 c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    { securityScheme, Array.Empty<string>() }
+                    {securityScheme, Array.Empty<string>()}
                 });
             });
 
