@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace Folio3.DotNet.Sbp.Data.School.Entities
+namespace Folio3.Sbp.Data.School.Entities
 {
     public class User : IdentityUser
     {

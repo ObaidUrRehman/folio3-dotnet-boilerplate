@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Folio3.DotNet.Sbp.Service.School.Dto;
+using Folio3.Sbp.Service.School.Dto;
 
-namespace Folio3.DotNet.Sbp.Api.Models
+namespace Folio3.Sbp.Api.Models
 {
     public class AuthenticateResponse
     {

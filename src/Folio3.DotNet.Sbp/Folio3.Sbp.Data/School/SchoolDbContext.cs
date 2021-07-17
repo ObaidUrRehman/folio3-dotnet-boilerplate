@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Folio3.DotNet.Sbp.Data.AuditLogging;
-using Folio3.DotNet.Sbp.Data.Common;
-using Folio3.DotNet.Sbp.Data.School.Entities;
-using Folio3.DotNet.Sbp.Data.School.Migrations;
+using Folio3.Sbp.Data.AuditLogging;
+using Folio3.Sbp.Data.Common;
+using Folio3.Sbp.Data.School.Entities;
+using Folio3.Sbp.Data.School.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Data.School
+namespace Folio3.Sbp.Data.School
 {
     // https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-5.0
     public class SchoolDbContext : AuditedDbContext

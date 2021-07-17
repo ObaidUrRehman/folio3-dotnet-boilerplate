@@ -1,7 +1,7 @@
 ﻿using System;
-using Folio3.DotNet.Sbp.Service.Base;
+using Folio3.Sbp.Service.Base;
 
-namespace Folio3.DotNet.Sbp.Service.School.Dto
+namespace Folio3.Sbp.Service.School.Dto
 {
     public class StudentDto : IDto
     {

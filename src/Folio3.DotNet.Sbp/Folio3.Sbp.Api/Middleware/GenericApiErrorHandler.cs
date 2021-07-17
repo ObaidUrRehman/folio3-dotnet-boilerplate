@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using Folio3.DotNet.Sbp.Service.Common.Dto;
-using Folio3.DotNet.Sbp.Service.Exceptions;
+using Folio3.Sbp.Service.Common.Dto;
+using Folio3.Sbp.Service.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Folio3.DotNet.Sbp.Api.Middleware
+namespace Folio3.Sbp.Api.Middleware
 {
     public static class GenericApiErrorHandler
     {

@@ -1,15 +1,15 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Folio3.DotNet.Sbp.Api.Attributes;
-using Folio3.DotNet.Sbp.Api.Models;
-using Folio3.DotNet.Sbp.Service.Common.Dto;
-using Folio3.DotNet.Sbp.Service.Common.Services;
-using Folio3.DotNet.Sbp.Service.School.Dto;
-using Folio3.DotNet.Sbp.Service.School.Services;
+using Folio3.Sbp.Api.Attributes;
+using Folio3.Sbp.Api.Models;
+using Folio3.Sbp.Service.Common.Dto;
+using Folio3.Sbp.Service.Common.Services;
+using Folio3.Sbp.Service.School.Dto;
+using Folio3.Sbp.Service.School.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Api.Controllers
+namespace Folio3.Sbp.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

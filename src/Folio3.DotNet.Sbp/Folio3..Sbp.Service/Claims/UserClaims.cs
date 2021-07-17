@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
-namespace Folio3.DotNet.Sbp.Service.Claims
+namespace Folio3.Sbp.Service.Claims
 {
     public interface IUserClaims
     {

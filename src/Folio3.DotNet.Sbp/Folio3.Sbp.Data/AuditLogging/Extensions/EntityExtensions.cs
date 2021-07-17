@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging.Extensions
+namespace Folio3.Sbp.Data.AuditLogging.Extensions
 {
     public static class EntityExtensions
     {

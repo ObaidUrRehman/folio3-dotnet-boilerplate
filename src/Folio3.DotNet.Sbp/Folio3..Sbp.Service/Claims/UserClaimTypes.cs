@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using Folio3.DotNet.Sbp.Service.School.Dto;
+using Folio3.Sbp.Service.School.Dto;
 
-namespace Folio3.DotNet.Sbp.Service.Claims
+namespace Folio3.Sbp.Service.Claims
 {
     public class UserClaimTypes
     {

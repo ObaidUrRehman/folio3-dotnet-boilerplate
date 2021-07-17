@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Folio3.DotNet.Sbp.Service.School.Dto
+namespace Folio3.Sbp.Service.School.Dto
 {
     public class UserDto
     {

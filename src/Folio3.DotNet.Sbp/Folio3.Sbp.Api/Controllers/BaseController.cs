@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Folio3.DotNet.Sbp.Service.Common;
-using Folio3.DotNet.Sbp.Service.Common.Dto;
+using Folio3.Sbp.Service.Common;
+using Folio3.Sbp.Service.Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Api.Controllers
+namespace Folio3.Sbp.Api.Controllers
 {
     public abstract class BaseController : ControllerBase
     {

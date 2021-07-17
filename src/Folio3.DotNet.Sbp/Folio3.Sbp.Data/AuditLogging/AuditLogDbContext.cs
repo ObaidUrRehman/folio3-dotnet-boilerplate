@@ -1,7 +1,7 @@
-﻿using Folio3.DotNet.Sbp.Data.AuditLogging.Entities;
+﻿using Folio3.Sbp.Data.AuditLogging.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging
+namespace Folio3.Sbp.Data.AuditLogging
 {
     public class AuditLogDbContext : DbContext
     {

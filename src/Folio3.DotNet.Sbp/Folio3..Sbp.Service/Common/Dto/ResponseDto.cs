@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Folio3.DotNet.Sbp.Service.Common.Dto
+namespace Folio3.Sbp.Service.Common.Dto
 {
     public class ResponseDto
     {

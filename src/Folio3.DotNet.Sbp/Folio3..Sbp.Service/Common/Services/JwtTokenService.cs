@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using Folio3.DotNet.Sbp.Common.Settings;
-using Folio3.DotNet.Sbp.Service.Claims;
-using Folio3.DotNet.Sbp.Service.School.Dto;
+using Folio3.Sbp.Common.Settings;
+using Folio3.Sbp.Service.Claims;
+using Folio3.Sbp.Service.School.Dto;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Folio3.DotNet.Sbp.Service.Common.Services
+namespace Folio3.Sbp.Service.Common.Services
 {
     public class JwtTokenService
     {

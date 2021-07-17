@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Folio3.DotNet.Sbp.Data.AuditLogging.Entities;
-using Folio3.DotNet.Sbp.Data.AuditLogging.Extensions;
-using Folio3.DotNet.Sbp.Data.School.Entities;
+using Folio3.Sbp.Data.AuditLogging.Entities;
+using Folio3.Sbp.Data.AuditLogging.Extensions;
+using Folio3.Sbp.Data.School.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging
+namespace Folio3.Sbp.Data.AuditLogging
 {
     public class AuditedDbContext: IdentityDbContext<User>
     {

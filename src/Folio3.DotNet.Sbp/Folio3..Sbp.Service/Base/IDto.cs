@@ -1,4 +1,4 @@
-﻿namespace Folio3.DotNet.Sbp.Service.Base
+﻿namespace Folio3.Sbp.Service.Base
 {
     public interface IDto
     {

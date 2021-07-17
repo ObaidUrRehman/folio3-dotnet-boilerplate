@@ -1,8 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging.Extensions
+namespace Folio3.Sbp.Data.AuditLogging.Extensions
 {
     public static class AuditedRepoExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging.Entities
+namespace Folio3.Sbp.Data.AuditLogging.Entities
 {
     public class AuditLogChange
     {

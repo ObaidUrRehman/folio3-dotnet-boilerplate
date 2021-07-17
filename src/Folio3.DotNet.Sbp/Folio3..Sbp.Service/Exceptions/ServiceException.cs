@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Folio3.DotNet.Sbp.Service.Exceptions
+namespace Folio3.Sbp.Service.Exceptions
 {
     public class ServiceException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Folio3.DotNet.Sbp.Service.Common.Dto
+namespace Folio3.Sbp.Service.Common.Dto
 {
     public class PagedResponseDto<T> : ResponseDto<IEnumerable<T>>
     {

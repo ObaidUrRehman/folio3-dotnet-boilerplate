@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Folio3.DotNet.Sbp.Service.Common.Services;
-using Folio3.DotNet.Sbp.Service.School.Services;
+using Folio3.Sbp.Service.Common.Services;
+using Folio3.Sbp.Service.School.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Folio3.DotNet.Sbp.Service
+namespace Folio3.Sbp.Service
 {
     public static class BootstrapConfig
     {

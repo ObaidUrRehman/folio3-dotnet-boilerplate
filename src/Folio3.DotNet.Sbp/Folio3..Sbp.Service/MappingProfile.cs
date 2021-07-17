@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Folio3.DotNet.Sbp.Data.School.Entities;
-using Folio3.DotNet.Sbp.Service.School.Dto;
+using Folio3.Sbp.Data.School.Entities;
+using Folio3.Sbp.Service.School.Dto;
 
-namespace Folio3.DotNet.Sbp.Service
+namespace Folio3.Sbp.Service
 {
     public class MappingProfile : Profile
     {

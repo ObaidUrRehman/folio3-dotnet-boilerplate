@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Folio3.DotNet.Sbp.Data.School.Migrations
+namespace Folio3.Sbp.Data.School.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
     internal class SchoolDbContextModelSnapshot : ModelSnapshot

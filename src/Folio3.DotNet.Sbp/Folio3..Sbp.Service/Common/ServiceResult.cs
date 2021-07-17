@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Folio3.DotNet.Sbp.Service.Common
+namespace Folio3.Sbp.Service.Common
 {
     /// <summary>
     ///     Represents the result of a service method call

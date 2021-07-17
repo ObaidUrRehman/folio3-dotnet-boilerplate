@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Folio3.DotNet.Sbp.Common.Config
+namespace Folio3.Sbp.Common.Config
 {
     public static class AppConfig
     {

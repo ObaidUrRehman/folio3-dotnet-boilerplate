@@ -1,15 +1,16 @@
 using System;
 using System.Text;
-using Folio3.DotNet.Sbp.Api.Attributes;
-using Folio3.DotNet.Sbp.Api.Middleware;
-using Folio3.DotNet.Sbp.Api.Provider;
-using Folio3.DotNet.Sbp.Api.Swagger;
-using Folio3.DotNet.Sbp.Common.Settings;
-using Folio3.DotNet.Sbp.Data.AuditLogging.Extensions;
 using Folio3.DotNet.Sbp.Data.School;
-using Folio3.DotNet.Sbp.Data.School.Entities;
-using Folio3.DotNet.Sbp.Service;
-using Folio3.DotNet.Sbp.Service.Claims;
+using Folio3.Sbp.Api.Attributes;
+using Folio3.Sbp.Api.Middleware;
+using Folio3.Sbp.Api.Provider;
+using Folio3.Sbp.Api.Swagger;
+using Folio3.Sbp.Common.Settings;
+using Folio3.Sbp.Data.AuditLogging.Extensions;
+using Folio3.Sbp.Data.School;
+using Folio3.Sbp.Data.School.Entities;
+using Folio3.Sbp.Service;
+using Folio3.Sbp.Service.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,7 +22,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Folio3.DotNet.Sbp.Api
+namespace Folio3.Sbp.Api
 {
     public class Startup
     {

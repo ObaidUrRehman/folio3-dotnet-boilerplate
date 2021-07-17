@@ -1,9 +1,9 @@
-using Folio3.DotNet.Sbp.Common.Config;
+using Folio3.Sbp.Common.Config;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Api
+namespace Folio3.Sbp.Api
 {
     public class Program
     {

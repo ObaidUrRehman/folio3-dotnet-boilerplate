@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace Folio3.DotNet.Sbp.Data.AuditLogging.Entities
+namespace Folio3.Sbp.Data.AuditLogging.Entities
 {
     public class AuditLog
     {

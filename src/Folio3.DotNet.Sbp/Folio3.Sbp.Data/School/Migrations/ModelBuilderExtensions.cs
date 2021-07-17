@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Folio3.DotNet.Sbp.Data.School.Entities;
+using Folio3.Sbp.Data.School.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Folio3.DotNet.Sbp.Data.School.Migrations
+namespace Folio3.Sbp.Data.School.Migrations
 {
     public static class ModelBuilderExtensions
     {

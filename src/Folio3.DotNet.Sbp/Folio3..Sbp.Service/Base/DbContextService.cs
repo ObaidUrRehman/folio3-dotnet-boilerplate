@@ -4,12 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
-using Folio3.DotNet.Sbp.Data.Common;
-using Folio3.DotNet.Sbp.Service.Common.Dto;
+using Folio3.Sbp.Data.Common;
+using Folio3.Sbp.Service.Common.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Service.Base
+namespace Folio3.Sbp.Service.Base
 {
     /// <summary>
     ///     A base service class that has some niceities of the GenericService, but also

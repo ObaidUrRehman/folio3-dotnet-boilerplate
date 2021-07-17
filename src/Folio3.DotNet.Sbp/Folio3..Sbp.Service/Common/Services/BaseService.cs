@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using Folio3.DotNet.Sbp.Service.Base;
+using Folio3.Sbp.Service.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Folio3.DotNet.Sbp.Service.Common.Services
+namespace Folio3.Sbp.Service.Common.Services
 {
     public abstract class BaseService : DbContextService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Folio3.DotNet.Sbp.Data.School.Entities
+namespace Folio3.Sbp.Data.School.Entities
 {
     public class Student : Person
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Folio3.DotNet.Sbp.Api.Attributes
+namespace Folio3.Sbp.Api.Attributes
 {
     public class ValidateModelAttribute : ActionFilterAttribute
     {

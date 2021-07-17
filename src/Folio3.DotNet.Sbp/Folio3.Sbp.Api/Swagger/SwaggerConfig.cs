@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Folio3.DotNet.Sbp.Api.Swagger
+namespace Folio3.Sbp.Api.Swagger
 {
     public static class SwaggerConfig
     {
