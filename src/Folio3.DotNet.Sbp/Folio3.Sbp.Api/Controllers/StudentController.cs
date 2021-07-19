@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Folio3.Sbp.Service.Common.Dto;
 using Folio3.Sbp.Service.School.Dto;
 using Folio3.Sbp.Service.School.Services;
@@ -23,6 +24,12 @@ namespace Folio3.Sbp.Api.Controllers
 
         public StudentService StudentService { get; }
 
+        [HttpGet("all")]
+        public async Task<ResponseDto<List<StudentDto>>> GetStudents()
+        {
+            return Result(await StudentService.GetStudentsAsync());
+        }
+
         [HttpPost]
         public async Task<ResponseDto<StudentDto>> AddStudent([FromBody] StudentDto student)
         {
@@ -30,9 +37,15 @@ namespace Folio3.Sbp.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ResponseDto<StudentDto>> UpdateStudent(int id, [FromBody] StudentDto student)
+        public async Task<ResponseDto<StudentDto>> UpdateStudent(long id, [FromBody] StudentDto student)
         {
             return Result(await StudentService.UpdateStudentAsync(id, student));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ResponseDto<bool>> DeleteStudent(long id)
+        {
+            return Result(await StudentService.DeleteStudentAsync(id));
         }
     }
 }
