@@ -275,3 +275,6 @@ __pycache__/
 
 # IdentityServer temp files
 tempkey.jwk
+
+# Log files
+Logs/
