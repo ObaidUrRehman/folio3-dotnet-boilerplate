@@ -1,11 +1,23 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
 
 namespace Folio3.Sbp.Common.Config
 {
     public static class AppConfig
     {
+        public static void ConfigureSerilog()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 10)
+                .CreateLogger();
+        }
+
         /// <summary>
         ///     Configure the shared Application settings by combining all the config files together
         /// </summary>
