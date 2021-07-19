@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Folio3.Sbp.Data.AuditLogging;
 using Folio3.Sbp.Data.Common;
+using Folio3.Sbp.Data.Extensions;
 using Folio3.Sbp.Data.School.Entities;
 using Folio3.Sbp.Data.School.Migrations;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,14 @@ namespace Folio3.Sbp.Data.School
 
             base.OnModelCreating(modelBuilder);
 
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(ISoftDeleteEntity).IsAssignableFrom(entityType.ClrType))
+                {
+                    entityType.AddSoftDeleteQueryFilter();
+                }
+            }
+
             modelBuilder.Entity<CourseAssignment>()
                 .HasKey(c => new {c.CourseID, c.InstructorID});
         }
@@ -44,6 +53,7 @@ namespace Folio3.Sbp.Data.School
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
             CancellationToken cancellationToken = default)
         {
+            SoftDeleteHelper.ProcessSoftDelete(ChangeTracker);
             TrackableHelpers.PopulateTrackableFields(ChangeTracker);
             var result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
             return result;
