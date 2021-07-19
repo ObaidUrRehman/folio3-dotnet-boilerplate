@@ -93,7 +93,7 @@ namespace Folio3.Sbp.Api
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
                 app.ConfigureSwaggerUi();
             }
 
