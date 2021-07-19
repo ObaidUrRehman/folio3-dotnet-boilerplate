@@ -36,7 +36,7 @@ namespace Folio3.Sbp.Api.Middleware
             {
                 response.Message = "Internal Server Error.";
 
-                logger.LogError(ex, "SSI.Api Exception");
+                logger.LogError(ex, "Folio3.Sbp.Api Exception");
                 //response.TraceId = Sentry.SentrySdk.CaptureException(ex).ToString();
 
                 if (isDev)
