@@ -16,7 +16,7 @@
 - [x] JWT Setup            `[Munesh]`
 - [x] Audit Logging        `[Obaid]`
 - [ ] Multi-tenancy        `[Skip]`
-- [ ] Soft Delete          `[Munesh]`
+- [x] Soft Delete          `[Munesh]`
 - [x] Machine specific configuration `[Munesh]`
 - [ ] Caching              `[Skip]`
 - [x] Generic service class `[Munesh]`
