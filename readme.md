@@ -21,7 +21,7 @@
 - [ ] Caching              `[Skip]`
 - [x] Generic service class `[Munesh]`
 - [x] Generic exception handling and ResponsDto `[Munesh]`
-- [ ] Logging            `[Munesh]`
+- [x] Logging            `[Munesh]`
 - [x] Automapping        `[Munesh]` 
 - [ ] Email templating  `[Skip]`
 - [ ] Email sending `[Skip]`
