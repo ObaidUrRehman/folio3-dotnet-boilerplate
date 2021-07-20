@@ -1,5 +1,7 @@
 # Folio3 Dotnet Simple Boiler Plate (sbp)
 
+[![.NET](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml)
+
 
 ## Features
 * Audit Logging
