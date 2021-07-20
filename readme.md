@@ -25,7 +25,7 @@
 - [x] Automapping        `[Munesh]` 
 - [ ] Email templating  `[Skip]`
 - [ ] Email sending `[Skip]`
-- [ ] Unit testing            `[Munesh]`
+- [x] Unit testing            `[Munesh]`
 - [ ] Lightweigh Background Jobs `[Obaid]`
 - [ ] Validations
 - [ ] Data Seeding
