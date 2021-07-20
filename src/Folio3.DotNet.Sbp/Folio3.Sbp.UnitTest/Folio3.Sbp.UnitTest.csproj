@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Folio3..Sbp.Service\Folio3.Sbp.Service.csproj" />
     <ProjectReference Include="..\Folio3.Sbp.Data\Folio3.Sbp.Data.csproj" />
   </ItemGroup>
 
