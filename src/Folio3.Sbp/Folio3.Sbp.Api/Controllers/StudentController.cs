@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Folio3.Sbp.Service.Background;
 using Folio3.Sbp.Service.Common.Dto;
 using Folio3.Sbp.Service.School.Dto;
 using Folio3.Sbp.Service.School.Services;
@@ -24,6 +25,7 @@ namespace Folio3.Sbp.Api.Controllers
 
         public StudentService StudentService { get; }
 
+        [AllowAnonymous]
         [HttpGet("all")]
         public async Task<ResponseDto<List<StudentDto>>> GetStudents()
         {
@@ -46,6 +48,14 @@ namespace Folio3.Sbp.Api.Controllers
         public async Task<ResponseDto<bool>> DeleteStudent(long id)
         {
             return Result(await StudentService.DeleteStudentAsync(id));
+        }
+
+        [AllowAnonymous]
+        [HttpPost("add-background")]
+        public async Task<ResponseDto> Background([FromBody]int count, [FromServices] BackgroundJobManager backgroundJobManager)
+        {
+            await backgroundJobManager.QueueJobAsync(new List<int> {count});
+            return Success();
         }
     }
 }

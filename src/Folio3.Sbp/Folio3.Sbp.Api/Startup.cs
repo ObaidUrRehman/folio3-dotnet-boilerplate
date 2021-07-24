@@ -9,6 +9,7 @@ using Folio3.Sbp.Data.AuditLogging.Extensions;
 using Folio3.Sbp.Data.School;
 using Folio3.Sbp.Data.School.Entities;
 using Folio3.Sbp.Service;
+using Folio3.Sbp.Service.Background;
 using Folio3.Sbp.Service.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -35,24 +36,26 @@ namespace Folio3.Sbp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:school"]));
-
-            services.ConfigureAuditLogging<AuditMetaData>(Configuration["ConnectionStrings:auditLog"]);
-
             services
+                .AddDbContext<SchoolDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:school"]))
+                .ConfigureAuditLogging<AuditMetaData>(Configuration["ConnectionStrings:auditLog"])
                 .RegisterApplicationServices()
                 .AddScoped<ValidateModelAttribute>()
                 .AddHttpContextAccessor()
                 .AddScoped<IUserClaims, UserClaims>()
                 .AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<SchoolDbContext>();
+                .AddEntityFrameworkStores<SchoolDbContext>()
+                ;
 
             services.ConfigureSwagger();
 
             services.AddControllers();
 
+            services.ConfigureSampleBackgroundJob();
 
+
+            // TODO: Move JWT configure to separate class like the AddBackgroundTaskQueue
             var section = Configuration.GetSection("JwtTokenSettings");
             services.Configure<JwtTokenSettings>(section);
             var jwtTokenSettings = section.Get<JwtTokenSettings>();

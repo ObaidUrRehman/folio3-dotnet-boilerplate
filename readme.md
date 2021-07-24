@@ -9,7 +9,7 @@
 |  Audit fields (Created, Modified, Version)    | Munesh    | ✅ |
 |  Soft Delete                                  | Munesh    | ✅ |
 |  Machine specific configuration               | Munesh    | ✅ |
-|  Lightweight Background Jobs                  | Obaid     | ❌ |
+|  Lightweight Background Jobs                  | Obaid     | ✅ |
 |  Generic Service class                        | Munesh    | ✅ |
 |  Generic Exception handling & Respose         | Munesh    | ✅ |
 |  Healthchecks                                 |           | ❌ |
