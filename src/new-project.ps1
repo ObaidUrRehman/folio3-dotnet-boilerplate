@@ -15,7 +15,7 @@ $text = @"
   ██       ██████  ███████ ██  ██████  ██████      ███████ ██████  ██    
 
 ████████████████████████████████████████████████████████████████████████████
-                                                                         
+																		 
 This script will create a copy of the folio3 Simple boilerplate code based on the company & project
 name you provide.                                                                         
 "@

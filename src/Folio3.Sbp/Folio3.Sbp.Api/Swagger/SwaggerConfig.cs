@@ -12,7 +12,7 @@ namespace Folio3.Sbp.Api.Swagger
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.DotNet.Sbp.Api", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.Sbp.Api", Version = "v1"});
 
                 var securityScheme = new OpenApiSecurityScheme
                 {
@@ -41,7 +41,7 @@ namespace Folio3.Sbp.Api.Swagger
         public static IApplicationBuilder ConfigureSwaggerUi(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Folio3.DotNet.Sbp.Api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Folio3.Sbp.Api v1"));
             return app;
         }
     }
