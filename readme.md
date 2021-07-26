@@ -2,6 +2,8 @@
 
 [![.NET](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml)
 
+[![Build Status](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_apis/build/status/ObaidUrRehman.folio3-dotnet-boilerplate?branchName=master)](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_build/latest?definitionId=1&branchName=master)
+
 
 | Feature                                       | Developer | Status |
 | --------------------------------------------- | --------- |--------|
