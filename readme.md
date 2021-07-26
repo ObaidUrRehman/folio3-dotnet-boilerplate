@@ -52,3 +52,9 @@ This feature lets you:
 The config files are loaded in the following order:
 
 ![Machine & Shared configuration](doc/image003.png)
+
+## Lightweight Background Jobs
+This is a light weight background job processor based off the [Hosted Service](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio) feature in asp.net core. In the boilerplate sample we use Thread chanels to send a list of Ids to a background worker that processes them. Use this to perform simple tasks (like generating thumbs, sending email etc) where you need to return the response asap to client and not holdup.
+This stuff is not generic like Hangfire and is not supposed to run long tasks that consume lots of resources.
+
+## Generic Service class

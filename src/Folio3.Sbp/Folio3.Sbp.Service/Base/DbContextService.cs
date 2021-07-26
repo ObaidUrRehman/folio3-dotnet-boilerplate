@@ -12,9 +12,9 @@ using Microsoft.Extensions.Logging;
 namespace Folio3.Sbp.Service.Base
 {
     /// <summary>
-    ///     A base service class that has some niceities of the GenericService, but also
-    ///     allows it to handle multiple database tables and does away with a lot of the
-    ///     convoluted and annoying code
+    /// A base service class that has some niceties of the GenericService, but also
+    /// allows it to handle multiple database tables and does away with a lot of the
+    /// convoluted and annoying code
     /// </summary>
     public abstract class DbContextService
     {
@@ -102,7 +102,7 @@ namespace Folio3.Sbp.Service.Base
         }
 
         /// <summary>
-        ///     Update an entity based on an ID and an incoming DTO which gets mapped to the entity
+        /// Update an entity based on an ID and an incoming DTO which gets mapped to the entity
         /// </summary>
         public async Task<TDto> UpdateAsync<TDto, TEntity>(long id, TDto dto)
             where TEntity : class, IBaseEntity where TDto : IDto
@@ -139,7 +139,7 @@ namespace Folio3.Sbp.Service.Base
         }
 
         /// <summary>
-        ///     Delete an entity based on the ID
+        /// Delete an entity based on the ID
         /// </summary>
         public async Task<bool> DeleteAsync<TEntity>(long id) where TEntity : class, IBaseEntity
         {
