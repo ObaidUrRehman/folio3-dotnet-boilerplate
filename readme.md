@@ -5,19 +5,48 @@
 
 | Feature                                       | Developer | Status |
 | --------------------------------------------- | --------- |--------|
-|  Audit Trail Logging                          | Obaid     | ✅ |
+|  Audit Logging                                | Obaid     | ✅ |
 |  Audit fields (Created, Modified, Version)    | Munesh    | ✅ |
 |  Soft Delete                                  | Munesh    | ✅ |
 |  Machine & shared configuration               | Munesh    | ✅ |
 |  Lightweight Background Jobs                  | Obaid     | ✅ |
 |  Generic Service class                        | Munesh    | ✅ |
 |  Generic Exception handling & Respose         | Munesh    | ✅ |
-|  Healthchecks                                 |           | ❌ |
 |  Swagger Integration                          | Obaid     | ✅ |
 |  JWT Api Auth                                 | Munesh    | ✅ |
-|  Email Abstraction with templating            |           | ❌ |
+|  Structured Logging                           | Munesh    | ✅ |
 |  Unit Testing                                 | Munesh    | ✅ |
 |  Data seeding                                 |           | ❌ |
 |  Validations                                  |           | ❌ |
-|  Structured Logging                           | Munesh    | ✅ |
 |  Caching                                      |           | ❌ |
+|  Healthchecks                                 |           | ❌ |
+|  Email Abstraction with templating            |           | ❌ |
+
+## Audit Logging
+Audit Logging utilities allow you to track all changes to a database by capturing changes in the data context and committing those changes to separate Audit Log database.
+
+### Usage
+1. Inherit your `DbContext` class from `AuditedDbContext` class
+2. Implement the `IAuditMetaData` which determines how you populate information to the trail. Mostly from the user claims.
+3. Configure Audit Logging in the startup:
+```csharp
+services
+    .ConfigureAuditLogging<AuditMetaData>(Configuration["ConnectionStrings:auditLog"])
+```
+
+## Audit fields
+The sample `DbContext` is rigged to populate Audit fields. You can add more fields as required. All entities inherit from `Folio3.Sbp.Data.Common.TrackableEntity`
+
+## Soft Delete
+Simply inherit your entity from `Folio3.Sbp.Data.Common.ISoftDeleteEntity` and your entity will be soft-delete only. This feature is implemented using EFCore's [Global Query Filters](https://docs.microsoft.com/en-us/ef/core/querying/filters)
+
+## Machine & shared configuration
+This feature lets you:
+* Keep all you common configuration accross projects in one place. `(sharedSettings.json)`
+* Keep all common enviornment based configuration in one place `(sharedSettings.Development.json)`
+* A master machine settings that is applied to all dev machines (You can use this to disable certain stuff on developer machines like sentry, analytics, etc) `(MasterMachineSettings.json)`
+* A machine sepecif settings so each developer can have his own configuration (like for database) and does not have to change any other settings. `(Settings.{MachineName}.json)`
+
+The config files are loaded in the following order:
+
+![Machine & Shared configuration](doc/image003.png)
