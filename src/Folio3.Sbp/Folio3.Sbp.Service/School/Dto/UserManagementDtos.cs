@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Folio3.Sbp.Service.Base;
 
 namespace Folio3.Sbp.Service.School.Dto
 {
-    public class UserDto
+    public class UserDto : IDto
     {
         public string Id { get; set; }
         public string Email { get; set; }

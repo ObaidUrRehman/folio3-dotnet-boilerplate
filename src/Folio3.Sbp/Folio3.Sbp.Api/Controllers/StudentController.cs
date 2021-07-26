@@ -12,44 +12,56 @@ namespace Folio3.Sbp.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    // [Authorize]
     public class StudentController : BaseController
     {
-        public StudentController(
-            ILogger<StudentController> logger,
-            StudentService studentService
-        ) : base(logger)
+        public StudentController(ILogger<StudentController> logger, StudentService studentService) : base(logger)
         {
             StudentService = studentService;
         }
 
         public StudentService StudentService { get; }
 
+        /// <summary>
+        /// Gets all students as paged response
+        /// </summary>
         [AllowAnonymous]
-        [HttpGet("all")]
-        public async Task<ResponseDto<List<StudentDto>>> GetStudents()
+        [HttpGet("")]
+        public async Task<ResponseDto<PagedResponseDto<StudentDto>>> GetStudents(int page = 0, int size = 100)
         {
-            return Result(await StudentService.GetStudentsAsync());
+            return Result(await StudentService.GetAllPaginatedDtoAsync(page, size));
         }
 
+        /// <summary>
+        /// Adds a new student
+        /// </summary>
         [HttpPost]
         public async Task<ResponseDto<StudentDto>> AddStudent([FromBody] StudentDto student)
         {
-            return Result(await StudentService.AddStudentAsync(student));
+            return Result(await StudentService.AddDtoAsync(student));
         }
 
+        /// <summary>
+        /// Updates a student
+        /// </summary>
         [HttpPut("{id}")]
-        public async Task<ResponseDto<StudentDto>> UpdateStudent(long id, [FromBody] StudentDto student)
+        public async Task<ResponseDto<StudentDto>> UpdateStudent(int id, [FromBody] StudentDto student)
         {
-            return Result(await StudentService.UpdateStudentAsync(id, student));
+            return Result(await StudentService.UpdateDtoAsync(id, student));
         }
 
+        /// <summary>
+        /// Deletes a student
+        /// </summary>
         [HttpDelete("{id}")]
-        public async Task<ResponseDto<bool>> DeleteStudent(long id)
+        public async Task<ResponseDto<StudentDto>> DeleteStudent(int id)
         {
-            return Result(await StudentService.DeleteStudentAsync(id));
+            return Result(await StudentService.DeleteDtoAsync(id));
         }
 
+        /// <summary>
+        /// Test endpoint to invoke the background tasks that inserts specified number of students
+        /// </summary>
         [AllowAnonymous]
         [HttpPost("add-background")]
         public async Task<ResponseDto> Background([FromBody]int count, [FromServices] BackgroundJobManager backgroundJobManager)

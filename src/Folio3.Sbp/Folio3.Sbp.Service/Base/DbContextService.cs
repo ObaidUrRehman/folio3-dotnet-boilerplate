@@ -16,9 +16,12 @@ namespace Folio3.Sbp.Service.Base
     /// allows it to handle multiple database tables and does away with a lot of the
     /// convoluted and annoying code
     /// </summary>
-    public abstract class DbContextService
+    public abstract class DbContextService<TEntity, TDto>
+        where TEntity : class, IBaseEntity
+        where TDto : IDto 
+        
     {
-        public DbContextService(DbContext context, ILogger logger, IMapper mapper)
+        protected DbContextService(DbContext context, ILogger logger, IMapper mapper)
         {
             Context = context;
             Logger = logger;
@@ -29,46 +32,40 @@ namespace Folio3.Sbp.Service.Base
         protected IMapper Mapper { get; }
         protected ILogger Logger { get; }
 
-        private IQueryable<TEntity> GetEntityQuery<TEntity>() where TEntity : class, IBaseEntity
+        private IQueryable<TEntity> GetEntityQuery()
         {
             return Context.Set<TEntity>().AsQueryable();
         }
 
-        public async Task<TDto> FindAsync<TDto, TEntity>(long id) where TEntity : class, IBaseEntity where TDto : IDto
+        public async Task<TDto> FindAsync(long id)
         {
             return Mapper.Map<TDto>(await Context.Set<TEntity>().FindAsync(id));
         }
 
-        public async Task<TDto> SingleOrDefaultAsync<TDto, TEntity>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : class, IBaseEntity where TDto : IDto
+        public async Task<TDto> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return Mapper.Map<TDto>(await GetEntityQuery<TEntity>().SingleOrDefaultAsync(predicate));
+            return Mapper.Map<TDto>(await GetEntityQuery().SingleOrDefaultAsync(predicate));
         }
 
-        public virtual async Task<IList<TDto>> ToListAsync<TDto, TEntity>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : class, IBaseEntity
+        public virtual async Task<IList<TDto>> ToListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return Mapper.Map<List<TDto>>(await GetEntityQuery<TEntity>().Where(predicate).ToListAsync());
+            return Mapper.Map<List<TDto>>(await GetEntityQuery().Where(predicate).ToListAsync());
         }
 
-        public async Task<PagedResponseDto<TDto>> GetPageAsync<TDto, TEntity>(int page, int size)
-            where TEntity : class, IBaseEntity where TDto : IDto
+        public async Task<PagedResponseDto<TDto>> GetPageAsync(int page, int size)
         {
             return new PagedResponseDto<TDto>(
                 Mapper.Map<IEnumerable<TDto>>(
-                    await GetEntityQuery<TEntity>()
+                    await GetEntityQuery()
                         .Skip(page * size)
                         .Take(size)
                         .ToListAsync()),
-                true,
-                "",
                 page,
                 size,
-                await GetEntityQuery<TEntity>().CountAsync());
+                await GetEntityQuery().CountAsync());
         }
 
-        public async Task<PagedResponseDto<TDto>> GetPageAsync<TDto, TEntity>(IQueryable<TEntity> query, int page,
-            int size) where TEntity : class, IBaseEntity where TDto : IDto
+        public async Task<PagedResponseDto<TDto>> GetPageAsync(IQueryable<TEntity> query, int page, int size)
         {
             return new PagedResponseDto<TDto>(
                 Mapper.Map<IEnumerable<TDto>>(
@@ -76,8 +73,6 @@ namespace Folio3.Sbp.Service.Base
                         .Skip(page * size)
                         .Take(size)
                         .ToListAsync()),
-                true,
-                "",
                 page,
                 size,
                 await query.CountAsync());
@@ -87,7 +82,7 @@ namespace Folio3.Sbp.Service.Base
         ///     Add an entity specified by the DTO, mapping it to the Entity and
         ///     inserting it into the correct table magically.
         /// </summary>
-        public async Task<TDto> AddAsync<TDto, TEntity>(TDto dto) where TEntity : class, IBaseEntity where TDto : IDto
+        protected async Task<TDto> AddAsync(TDto dto)
         {
             if (dto == null)
                 throw new ArgumentNullException(nameof(dto));
@@ -104,8 +99,7 @@ namespace Folio3.Sbp.Service.Base
         /// <summary>
         /// Update an entity based on an ID and an incoming DTO which gets mapped to the entity
         /// </summary>
-        public async Task<TDto> UpdateAsync<TDto, TEntity>(long id, TDto dto)
-            where TEntity : class, IBaseEntity where TDto : IDto
+        protected async Task<TDto> UpdateAsync(long id, TDto dto)
         {
             var existing = await Context.Set<TEntity>().FindAsync(id);
             if (existing == null)
@@ -122,7 +116,7 @@ namespace Folio3.Sbp.Service.Base
             return Mapper.Map<TDto>(entity);
         }
 
-        public async Task<TEntity> UpdateAsync<TEntity>(long id, TEntity entity) where TEntity : class, IBaseEntity
+        protected async Task<TEntity> UpdateAsync(long id, TEntity entity)
         {
             var existing = await Context.Set<TEntity>().FindAsync(id);
             if (existing == null)
@@ -141,7 +135,7 @@ namespace Folio3.Sbp.Service.Base
         /// <summary>
         /// Delete an entity based on the ID
         /// </summary>
-        public async Task<bool> DeleteAsync<TEntity>(long id) where TEntity : class, IBaseEntity
+        protected async Task<bool> DeleteAsync(long id)
         {
             var existing = await Context.Set<TEntity>().FindAsync(id);
             if (existing == null)

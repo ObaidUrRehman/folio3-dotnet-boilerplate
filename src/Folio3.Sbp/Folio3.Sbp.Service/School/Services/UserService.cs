@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Folio3.Sbp.Service.School.Services
 {
-    public class UserService : BaseService
+    public class UserService : BaseService <User, UserDto>
     {
         public UserService(
             SchoolDbContext context,
@@ -41,7 +41,7 @@ namespace Folio3.Sbp.Service.School.Services
             var result = await UserManager.CreateAsync(user, password);
             return result.Succeeded
                 ? Success(Mapper.Map<UserDto>(user))
-                : Failure<UserDto>(result.Errors.Select(r => r.Description).ToList());
+                : Failure(result.Errors.Select(r => r.Description).ToList());
         }
 
         public async Task<ServiceResult<UserDto>> VerifyUserAsync(string userName, string password)
@@ -49,10 +49,10 @@ namespace Folio3.Sbp.Service.School.Services
             var user = await UserManager.FindByNameAsync(userName);
 
             if (user == null)
-                return Failure<UserDto>("User does not exist.");
+                return Failure("User does not exist.");
 
             if (!await UserManager.CheckPasswordAsync(user, password))
-                return Failure<UserDto>("Password did not match.");
+                return Failure("Password did not match.");
 
             return Success(Mapper.Map<UserDto>(user));
         }

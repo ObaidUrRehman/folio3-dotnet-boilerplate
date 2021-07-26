@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Folio3.Sbp.Api.Swagger
 {
@@ -12,7 +14,12 @@ namespace Folio3.Sbp.Api.Swagger
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Folio3.Sbp.Api", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Folio3.Sbp.Api", 
+                    Version = "v1", 
+                    Description = "Folio3.Sbp.Api Sample Api. Use this placeholder text to add description about your Api."
+                });
 
                 var securityScheme = new OpenApiSecurityScheme
                 {
@@ -33,6 +40,9 @@ namespace Folio3.Sbp.Api.Swagger
                 {
                     {securityScheme, Array.Empty<string>()}
                 });
+
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Folio3.Sbp.Api.xml");
+                c.IncludeXmlComments(filePath);
             });
 
             return services;
@@ -41,7 +51,15 @@ namespace Folio3.Sbp.Api.Swagger
         public static IApplicationBuilder ConfigureSwaggerUi(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Folio3.Sbp.Api v1"));
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Folio3.Sbp.Api v1");
+                c.EnableDeepLinking();
+                c.DocExpansion(DocExpansion.List);
+                c.DefaultModelRendering(ModelRendering.Model);
+                c.DisplayRequestDuration();
+                c.EnableFilter();
+            });
             return app;
         }
     }

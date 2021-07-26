@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Folio3.Sbp.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Folio3.Sbp.Api.Controllers.BaseController.BadRequest``1(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+                Returns a Bad Request.
+                Use this when the Api input parameters are incorrect.
+            </summary>
+        </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.GetStudents(System.Int32,System.Int32)">
+            <summary>
+            Gets all students as paged response
+            </summary>
+        </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.AddStudent(Folio3.Sbp.Service.School.Dto.StudentDto)">
+            <summary>
+            Adds a new student
+            </summary>
+        </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.UpdateStudent(System.Int32,Folio3.Sbp.Service.School.Dto.StudentDto)">
+            <summary>
+            Updates a student
+            </summary>
+        </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.DeleteStudent(System.Int32)">
+            <summary>
+            Deletes a student
+            </summary>
+        </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.Background(System.Int32,Folio3.Sbp.Service.Background.BackgroundJobManager)">
+            <summary>
+            Test endpoint to invoke the background tasks that inserts specified number of students
+            </summary>
+        </member>
+    </members>
+</doc>

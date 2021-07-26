@@ -1,9 +1,16 @@
 # Folio3 Dotnet Simple Boiler Plate (sbp)
 
-[![.NET](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml)
 
-[![Build Status](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_apis/build/status/ObaidUrRehman.folio3-dotnet-boilerplate?branchName=master)](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_build/latest?definitionId=1&branchName=master)
+[![.NET](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_apis/build/status/ObaidUrRehman.folio3-dotnet-boilerplate?branchName=master)](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_build/latest?definitionId=1&branchName=master)
 
+Sbp is a .NET 5, ASP.NET Core 5, Entity Framework Core 5, C# 9, Simple Boilerplate project. 
+Its monolith by nature and is kept as simple as possible and is well architected.
+
+## Getting started
+To use this project as a starting point you should execute the `new-project.ps1` script. 
+It will ask for you company & project name and rename the entire project (including project, namespace and solution files) into a new folder.
+
+## Features
 
 | Feature                                       | Developer | Status |
 | --------------------------------------------- | --------- |--------|
