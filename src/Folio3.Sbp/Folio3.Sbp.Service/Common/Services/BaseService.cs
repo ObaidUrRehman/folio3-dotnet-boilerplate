@@ -21,30 +21,30 @@ namespace Folio3.Sbp.Service.Common.Services
         {
         }
 
-        public async Task<ServiceResult<TDto>> AddDtoAsync(TDto dto)
+        public async Task<ServiceResult<TDto>> AddAsync(TDto dto)
         {
-            return Success(await AddAsync(dto));
+            return Success(await AddDtoAsync(dto));
         }
 
-        public async Task<ServiceResult<TDto>> UpdateDtoAsync(int id, TDto dto)
+        public async Task<ServiceResult<TDto>> UpdateAsync(int id, TDto dto)
         {
-            return Success(await UpdateAsync(id, dto));
+            return Success(await UpdateDtoAsync(id, dto));
         }
 
-        public async Task<ServiceResult<TDto>> DeleteDtoAsync(int id)
+        public async Task<ServiceResult<TDto>> DeleteAsync(int id)
         {
-            bool deleted = await DeleteAsync(id);
+            bool deleted = await DeleteEntityAsync(id);
             return Result(default(TDto), deleted);
         }
 
-        public async Task<ServiceResult<TDto>> GetDtoAsync(int id)
+        public async Task<ServiceResult<TDto>> GetAsync(int id)
         {
-            return Success(await FindAsync(id));
+            return Success(await FindDtoAsync(id));
         }
 
-        public async Task<ServiceResult<PagedResponseDto<TDto>>> GetAllPaginatedDtoAsync(int page, int size)
+        public async Task<ServiceResult<PagedResponseDto<TDto>>> GetPageAsync(int page, int size)
         {
-            return Success(await GetPageAsync(page, size));
+            return Success(await GetAllPaginatedDtoAsync(page, size));
         }
 
 

@@ -49,7 +49,7 @@ namespace Folio3.Sbp.Service.Background
 
                     for (var i = 0; i < studentCount; i++)
                     {
-                        await studentService.AddDtoAsync(new StudentDto
+                        await studentService.AddAsync(new StudentDto
                         {
                             FirstMidName = $"Student {i}",
                             LastName = "Anderson",

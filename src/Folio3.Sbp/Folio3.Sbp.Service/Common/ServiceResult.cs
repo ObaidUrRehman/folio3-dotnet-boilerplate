@@ -3,7 +3,7 @@
 namespace Folio3.Sbp.Service.Common
 {
     /// <summary>
-    ///     Represents the result of a service method call
+    /// Represents the result of a service method call
     /// </summary>
     public class ServiceResult<T>
     {

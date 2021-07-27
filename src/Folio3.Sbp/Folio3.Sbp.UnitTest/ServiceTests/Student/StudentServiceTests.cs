@@ -34,7 +34,7 @@ namespace Folio3.Sbp.UnitTest.ServiceTests.Student
                 EnrollmentDate = DateTime.UtcNow
             };
 
-            var result = await service.AddDtoAsync(student);
+            var result = await service.AddAsync(student);
             Assert.True(result.Success);
             Assert.True(result.Data.ID > 0);
         }

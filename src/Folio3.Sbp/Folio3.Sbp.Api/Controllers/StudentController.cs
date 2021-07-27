@@ -29,7 +29,7 @@ namespace Folio3.Sbp.Api.Controllers
         [HttpGet("")]
         public async Task<ResponseDto<PagedResponseDto<StudentDto>>> GetStudents(int page = 0, int size = 100)
         {
-            return Result(await StudentService.GetAllPaginatedDtoAsync(page, size));
+            return Result(await StudentService.GetPageAsync(page, size));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Folio3.Sbp.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ResponseDto<StudentDto>> GetStudent(int id)
         {
-            return Result(await StudentService.GetDtoAsync(id), true);
+            return Result(await StudentService.GetAsync(id), true);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Folio3.Sbp.Api.Controllers
         [HttpPost]
         public async Task<ResponseDto<StudentDto>> AddStudent([FromBody] StudentDto student)
         {
-            return Result(await StudentService.AddDtoAsync(student));
+            return Result(await StudentService.AddAsync(student));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Folio3.Sbp.Api.Controllers
         [HttpPut("{id}")]
         public async Task<ResponseDto<StudentDto>> UpdateStudent(int id, [FromBody] StudentDto student)
         {
-            return Result(await StudentService.UpdateDtoAsync(id, student));
+            return Result(await StudentService.UpdateAsync(id, student));
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Folio3.Sbp.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ResponseDto<StudentDto>> DeleteStudent(int id)
         {
-            return Result(await StudentService.DeleteDtoAsync(id));
+            return Result(await StudentService.DeleteAsync(id));
         }
 
         /// <summary>

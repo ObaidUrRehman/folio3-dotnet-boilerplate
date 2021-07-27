@@ -20,7 +20,7 @@ It will ask for you company & project name and rename the entire project (includ
 |  Machine & shared configuration               | Munesh    | ✅ |
 |  Lightweight Background Jobs                  | Obaid     | ✅ |
 |  Generic Service class                        | Munesh    | ✅ |
-|  Generic Exception handling & Respose         | Munesh    | ✅ |
+|  Generic Response & Exception handling        | Munesh    | ✅ |
 |  Swagger Integration                          | Obaid     | ✅ |
 |  JWT Api Auth                                 | Munesh    | ✅ |
 |  Structured Logging                           | Munesh    | ✅ |
@@ -67,8 +67,37 @@ This stuff is not generic like Hangfire and is not supposed to run long tasks th
 
 ## Generic Service class
 
+```
++-------+   E  +----------+  SR<DTO>   +-------------+ 
+|  Db   |  ==> | Service  |  =====>    | Controller  |
++-------+      +----------+            +-------------+ 
+```
+The `Folio3.Sbp.Service.Base.DbContextService` is a generic base service class that has basic CRUD operation methods. 
+This class is inherited by `Folio3.Sbp.Service.Common.Services.BaseService` class that encapsulates these methods by exposing CRUD methods wrapped in a `ServiceResult` class.
+The service result class has the following structure:
+
+
+```csharp
+    /// <summary>
+    /// Represents the result of a service method call
+    /// </summary>
+    public class ServiceResult<T>
+    {
+        public bool Success { get; set; }
+        public virtual T Data { get; set; }
+        public List<string> Errors { get; set; } = new List<string>();
+    }
+```
+You inherit your service class from the `Folio3.Sbp.Service.Common.Services.BaseService` class. This provides you with the following methods:
+![Service Layer](doc/service.png)
+
+The idea is that service layer will
+
+
 ## TypeScript Type generation
-The `Folio3.Sbp.TypeGen` project generates a typescript interface for all api responses. This file contains all model interfaces. For the boilerplate sample:
+The `Folio3.Sbp.TypeGen` project generates a typescript interface for all api responses from the `Folio3.Sbp.Api` project. 
+This file contains all model interfaces. These interfaces can be shared with front-end code to ensure type safety and
+model syncronization with frontend apps on React/Vue/Angular etc. For the boilerplate sample the following was generated:
 
 ```typescript
 export interface PagedResponseDtoOfStudentDto {
@@ -85,3 +114,5 @@ export interface StudentDto {
     enrollmentDate?: Date;
 }
 ```
+Please note that the `Folio3.Sbp.TypeGen` is set to no-build to speedup build time. Please rebuild this project after you make changes to your models.
+This feature was made possible using [NSwag MSBuild](https://github.com/RicoSuter/NSwag)
