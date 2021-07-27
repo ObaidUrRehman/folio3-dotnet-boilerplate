@@ -33,6 +33,16 @@ namespace Folio3.Sbp.Api.Controllers
         }
 
         /// <summary>
+        /// Gets a student
+        /// </summary>
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public async Task<ResponseDto<StudentDto>> GetStudent(int id)
+        {
+            return Result(await StudentService.GetDtoAsync(id), true);
+        }
+
+        /// <summary>
         /// Adds a new student
         /// </summary>
         [HttpPost]

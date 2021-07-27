@@ -45,11 +45,9 @@ namespace Folio3.Sbp.Api.Middleware
 
                     void AddExceptions(Exception e)
                     {
-                        if (e != null)
-                        {
-                            response.Errors.Add($"{e.Message}\n{e.StackTrace}\n");
-                            AddExceptions(e.InnerException);
-                        }
+                        if (e == null) return;
+                        response.Errors.Add($"{e.Message}\n{e.StackTrace}\n");
+                        AddExceptions(e.InnerException);
                     }
                 }
             }

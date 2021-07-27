@@ -87,8 +87,11 @@ namespace Folio3.Sbp.Api.Controllers
             return new ResponseDto<T>(default, false, message ?? DefaultNotFoundMessage);
         }
 
-        protected ResponseDto<T> Result<T>(ServiceResult<T> result)
+        protected ResponseDto<T> Result<T>(ServiceResult<T> result, bool notFoundOnEmpty = false)
         {
+            if (notFoundOnEmpty && result.Data == null)
+                    return NotFound<T>();
+
             return result.Success ? Success(result.Data) : BadRequest<T>(DefaultBadRequest, result.Errors);
         }
 

@@ -15,6 +15,11 @@
             Gets all students as paged response
             </summary>
         </member>
+        <member name="M:Folio3.Sbp.Api.Controllers.StudentController.GetStudent(System.Int32)">
+            <summary>
+            Gets a student
+            </summary>
+        </member>
         <member name="M:Folio3.Sbp.Api.Controllers.StudentController.AddStudent(Folio3.Sbp.Service.School.Dto.StudentDto)">
             <summary>
             Adds a new student
