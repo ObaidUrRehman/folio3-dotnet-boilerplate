@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSwag.CodeGeneration.TypeScript" Version="13.12.1" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.12.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Target Name="TypeGenMessage" AfterTargets="Build">
+    <Message Text="TypeScript Code Generation: $(GenerateTypes)" Importance="high" />
+  </Target>
+
+  <Target Name="NSwag" AfterTargets="Build">
+    <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
+    <Exec  WorkingDirectory="$(ProjectDir)" Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration)" />
+    <RemoveDir Directories="$(OutDir)References" />
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties nswag_1json__JsonSchema="https://json.schemastore.org/nuget-project.json" /></VisualStudio></ProjectExtensions>
+
+</Project>

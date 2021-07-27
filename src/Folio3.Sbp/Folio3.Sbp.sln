@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.Service", "Folio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Folio3.Sbp.UnitTest", "Folio3.Sbp.UnitTest\Folio3.Sbp.UnitTest.csproj", "{5390ED5F-E10F-4BAB-8462-EC11606D5ED3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folio3.Sbp.TypeGen", "Folio3.Sbp.TypeGen\Folio3.Sbp.TypeGen.csproj", "{083EF195-819C-477F-A7D0-286BC6875C01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,9 @@ Global
 		{5390ED5F-E10F-4BAB-8462-EC11606D5ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5390ED5F-E10F-4BAB-8462-EC11606D5ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5390ED5F-E10F-4BAB-8462-EC11606D5ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083EF195-819C-477F-A7D0-286BC6875C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083EF195-819C-477F-A7D0-286BC6875C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083EF195-819C-477F-A7D0-286BC6875C01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
