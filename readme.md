@@ -25,6 +25,7 @@ It will ask for you company & project name and rename the entire project (includ
 |  JWT Api Auth                                 | Munesh    | ✅ |
 |  Structured Logging                           | Munesh    | ✅ |
 |  Unit Testing                                 | Munesh    | ✅ |
+|  Type Generation                              | Obaid     | ✅ |
 |  Data seeding                                 |           | ❌ |
 |  Validations                                  |           | ❌ |
 |  Caching                                      |           | ❌ |
@@ -65,3 +66,22 @@ This is a light weight background job processor based off the [Hosted Service](h
 This stuff is not generic like Hangfire and is not supposed to run long tasks that consume lots of resources.
 
 ## Generic Service class
+
+## TypeScript Type generation
+The `Folio3.Sbp.TypeGen` project generates a typescript interface for all api responses. This file contains all model interfaces. For the boilerplate sample:
+
+```typescript
+export interface PagedResponseDtoOfStudentDto {
+    data?: StudentDto[] | undefined;
+    pageNumber?: number;
+    pageSize?: number;
+    totalRecords?: number;
+}
+
+export interface StudentDto {
+    id?: number;
+    firstMidName?: string | undefined;
+    lastName?: string | undefined;
+    enrollmentDate?: Date;
+}
+```
