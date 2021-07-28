@@ -16,8 +16,8 @@ $text = @"
 
 ████████████████████████████████████████████████████████████████████████████
 																		 
-This script will create a copy of the folio3 Simple boilerplate code based on the company & project
-name you provide.                                                                         
+This script will create a copy of the folio3 Simple boilerplate code based on the provided company & project
+name and initialize a git repository.                                                                         
 "@
 Write-Host $text -ForegroundColor Red
 
@@ -43,8 +43,8 @@ Write-Host 'Start copy folders...'
 $newRoot=$newCompanyName+"."+$newProjectName
 mkdir $newRoot
 Copy-Item -Recurse .\Folio3.Sbp\ .\$newRoot\
-# Copy-Item .gitignore .\$newRoot\
-# Copy-Item README.md .\$newRoot\
+Copy-Item .gitignore .\$newRoot\
+Copy-Item ..\readme.md .\$newRoot\
 
 # folders to deal with
 $slnFolder = (Get-Item -Path "./$newRoot/Folio3.Sbp/" -Verbose).FullName
@@ -95,6 +95,14 @@ function Rename {
 }
 
 Rename -TargetFolder $slnFolder -PlaceHolderCompanyName $oldCompanyName -PlaceHolderProjectName $oldProjectName -NewCompanyName $newCompanyName -NewProjectName $newProjectName
+Rename-Item -Path .\$newRoot\Folio3.Sbp -NewName src
+
+git init .\$newRoot
+cd .\$newRoot
+git add .
+git status
+git commit -m 'Initial Commit by Folio3 Sbp' --author 'Folio3 Sbp<orehman@folio3.com>'
+cd ..
 Write-Host 'ALL DONE' -ForegroundColor Red
 
 
