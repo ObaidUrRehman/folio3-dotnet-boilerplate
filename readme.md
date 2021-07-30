@@ -3,12 +3,13 @@
 
 [![.NET](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ObaidUrRehman/folio3-dotnet-boilerplate/actions/workflows/dotnet.yml) [![Build Status](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_apis/build/status/ObaidUrRehman.folio3-dotnet-boilerplate?branchName=master)](https://dev.azure.com/obaid-folio3/Folio3.DotNet.Sbp/_build/latest?definitionId=1&branchName=master)
 
+## Introduction
 Sbp is a .NET 5, ASP.NET Core 5, Entity Framework Core 5, C# 9, Simple Boilerplate project. 
-Its monolith by nature and is kept as simple as possible and is well architected.
+Its monolith by nature, well architected and is kept as simple as possible to get you jump started on a new project right away.
 
 ## Getting started
-To use this project as a starting point you should execute the `new-project.ps1` script. 
-It will ask for you company & project name and rename the entire project (including project, namespace and solution files) into a new folder.
+To use this project as a starting point run the `new-project.ps1` script. 
+It will ask for your company & project name and rename the entire project (including project & solution files along with namespaces etc.) into a new folder.
 
 ## Features
 
@@ -68,9 +69,9 @@ This stuff is not generic like Hangfire and is not supposed to run long tasks th
 ## Generic Service class
 
 ```
-+-------+   E  +----------+  SR<DTO>   +-------------+ 
-|  Db   |  ==> | Service  |  =====>    | Controller  |
-+-------+      +----------+            +-------------+ 
++-------+    Entity    +----------+  ServiceResult<DTO>  +-------------+ 
+|  Db   |  ==========> | Service  |    ==========>       | Controller  |
++-------+              +----------+                      +-------------+ 
 ```
 The `Folio3.Sbp.Service.Base.DbContextService` is a generic base service class that has basic CRUD operation methods. 
 This class is inherited by `Folio3.Sbp.Service.Common.Services.BaseService` class that encapsulates these methods by exposing CRUD methods wrapped in a `ServiceResult` class.
@@ -89,10 +90,42 @@ The service result class has the following structure:
     }
 ```
 You inherit your service class from the `Folio3.Sbp.Service.Common.Services.BaseService` class. This provides you with the following methods:
+
+
 ![Service Layer](doc/service.png)
 
-The idea is that service layer will
+The idea is that service layer will retrun a service result that will contain the result of operation. The controller will return appropiate result based on the response of the service layer.
 
+## Generic Response & Exception handling
+The controllers are supposed to be lean. Ideally it should be handled by the `Result` method like the following. Notice the lack of exception handler.
+
+```
+/// <summary>
+/// Adds a new student
+/// </summary>
+[HttpPost]
+public async Task<ResponseDto<StudentDto>> AddStudent([FromBody] StudentDto student)
+{
+    return Result(await StudentService.AddAsync(student));
+}
+```
+The `Result` method will return the error messages and the appropiate http status code. It is done by a generic error handler middleware `Folio3.Sbp.Api.Middleware.GenericApiErrorHandler`
+
+### Status Codes
+
+The API should return one of the following status codes:
+
+- 200 – response was handled by the server.  We may not have done what was requested, but there is a valid business reason for the request and response.
+- 4xx – client error.  The server is fine, but there was something wrong with the clients request
+- 400 – Bad Request – use this when in doubt.
+- 401 – Authorization failed.  Basically user is not logged in
+- 403 – Forbidden – the user is logged in, but they don’t have sufficient privileges.
+- 404 – Not found – not only for a bad endpoint, but also if the object requested doesn’t exists.
+- 500 – Internal Server Error – the request was (possibly) valid, but the server couldn’t handle the it.
+
+### Development vs Production
+
+In Development, we should return additional status information on Server Errors (e.g. Exception message, call stack, etc.); we should not return this info in Production.  I currently hooked up the “Developer Page” for a pretty page, but I think I will turn this off so the responses are the same in Development and Production, but with Development providing additional diagnostic info.
 
 ## TypeScript Type generation
 The `Folio3.Sbp.TypeGen` project generates a typescript interface for all api responses from the `Folio3.Sbp.Api` project. 
