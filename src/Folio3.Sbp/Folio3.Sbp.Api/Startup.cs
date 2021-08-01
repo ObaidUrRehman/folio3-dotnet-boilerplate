@@ -1,17 +1,14 @@
-using System;
-using System.Text;
 using Folio3.Sbp.Api.Attributes;
 using Folio3.Sbp.Api.Middleware;
 using Folio3.Sbp.Api.Provider;
 using Folio3.Sbp.Api.Swagger;
-using Folio3.Sbp.Common.Settings;
 using Folio3.Sbp.Data.AuditLogging.Extensions;
 using Folio3.Sbp.Data.School;
 using Folio3.Sbp.Data.School.Entities;
 using Folio3.Sbp.Service;
 using Folio3.Sbp.Service.Background;
 using Folio3.Sbp.Service.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Folio3.Sbp.Service.Common.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +17,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Folio3.Sbp.Api
 {
@@ -54,35 +50,7 @@ namespace Folio3.Sbp.Api
 
             services.ConfigureSampleBackgroundJob();
 
-
-            // TODO: Move JWT configure to separate class like the AddBackgroundTaskQueue
-            var section = Configuration.GetSection("JwtTokenSettings");
-            services.Configure<JwtTokenSettings>(section);
-            var jwtTokenSettings = section.Get<JwtTokenSettings>();
-
-            // JWT Bearer Auth
-            services
-                .AddAuthentication(c =>
-                {
-                    c.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    c.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(c =>
-                {
-                    c.RequireHttpsMetadata = true;
-                    c.SaveToken = true;
-                    c.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidIssuer = jwtTokenSettings.Issuer,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtTokenSettings.Secret)),
-                        ValidAudience = jwtTokenSettings.Audience,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
+            services.ConfigureJwtBearerAuth(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
