@@ -5,5 +5,10 @@
 		"Domain": "sandboxb.mailgun.org",
 		"ApiKey": "key-000000000000000",
 		"User": "Test User <noreply@mailinator.com>"
+	},
+	"SimpleEmailService": {
+		"Region": "us-west-1",
+		"AccessKey": "<Your_Access_Key>",
+		"SecretKey": "<Your_Secret_Key>"
 	}
 }

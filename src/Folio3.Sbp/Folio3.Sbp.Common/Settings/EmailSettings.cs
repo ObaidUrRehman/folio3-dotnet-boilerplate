@@ -7,4 +7,11 @@
 		public string ApiKey { get; set; }
 		public string User { get; set; }
 	}
+
+	public class SimpleEmailServiceSettings
+	{
+		public string Region { get; set; }
+		public string AccessKey { get; set; }
+		public string SecretKey { get; set; }
+	}
 }
