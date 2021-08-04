@@ -1,2 +1,9 @@
 {
+	"Mailgun": {
+		"Comment": "These are dummy values. Replace below values with Mailgun's verified account",
+		"BaseUrl": "https://api.mailgun.net/v3",
+		"Domain": "sandboxb.mailgun.org",
+		"ApiKey": "key-000000000000000",
+		"User": "Test User <noreply@mailinator.com>"
+	}
 }

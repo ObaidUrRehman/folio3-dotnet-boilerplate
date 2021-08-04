@@ -36,7 +36,7 @@ namespace Folio3.Sbp.Api
                 .AddDbContext<SchoolDbContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:school"]))
                 .ConfigureAuditLogging<AuditMetaData>(Configuration["ConnectionStrings:auditLog"])
-                .RegisterApplicationServices()
+                .RegisterApplicationServices(Configuration)
                 .AddScoped<ValidateModelAttribute>()
                 .AddHttpContextAccessor()
                 .AddScoped<IUserClaims, UserClaims>()
@@ -51,6 +51,10 @@ namespace Folio3.Sbp.Api
             services.ConfigureSampleBackgroundJob();
 
             services.ConfigureJwtBearerAuth(Configuration);
+
+            services
+                .AddHttpClient()
+                ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
