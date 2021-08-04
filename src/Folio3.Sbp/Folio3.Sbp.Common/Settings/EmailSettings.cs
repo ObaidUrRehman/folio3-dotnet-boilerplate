@@ -14,4 +14,9 @@
 		public string AccessKey { get; set; }
 		public string SecretKey { get; set; }
 	}
+
+	public class SendGridSettings
+	{
+		public string ApiKey { get; set; }
+	}
 }

@@ -10,5 +10,8 @@
 		"Region": "us-west-1",
 		"AccessKey": "<Your_Access_Key>",
 		"SecretKey": "<Your_Secret_Key>"
+	},
+	"SendGrid": {
+		"ApiKey": "<Your_Key>"
 	}
 }
